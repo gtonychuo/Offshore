@@ -1,0 +1,44 @@
+---
+title: Matrix of Countries
+author: 中山大學管理學院 
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+    css: style.css
+---
+
+```{r}
+rm(list=ls(all=T))
+pacman::p_load(readr, dplyr, ggplot2, stringr, maps, Matrix)
+load("data/X.rdata")
+```
+
+```{r}
+pat = paste(iso3166$ISOname, collapse="|")
+CX = str_extract_all(X$text, regex(pat, ignore.case=TRUE))
+N9 = unlist(CX) %>% table %>% sort(dec=T) %>% {.[. > 9]} %>% names
+C9 = lapply(CX, match, N9)
+df = do.call(rbind, lapply(1:length(C9), function(i) {
+  if(length(C9[[i]]) > 0) data.frame(i = i, j = C9[[i]])
+  })) 
+df = subset(df, complete.cases(df))
+df$x = 1
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+A = sapply(split(mx, X$sub), colSums)
+```
+
+```{r}
+t(A)
+```
+
+<br><br><br><hr>
+
+
+
+
+
+
+
