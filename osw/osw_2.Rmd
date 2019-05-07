@@ -1,0 +1,79 @@
+---
+title: Vessel Detect Project
+author: 中山大學管理學院 
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+    css: style.css
+---
+
+```{r results='hide', message=FALSE, warning=FALSE, echo=F}
+# Formating Codes.  Do not change the codes in this chunk.<br>
+### setwd("C:/1/G/osw")
+rm(list=ls(all=T))
+pacman::p_load(readr, dplyr, ggplot2, stringr,wordcloud2, RColorBrewer,htmlwidgets)
+load("data/X.rdata")
+
+```
+
+<br><hr>
+
+### 【A】filter words
+
+```{r}
+filters = "s |a |of |the |this |to |on |from |for |and |in |first |second |third |these |their |one |two |three |four |any |other |with |our |other "
+```
+
+```{r}
+bigram = X$text %>% tolower %>% 
+  str_extract_all("[a-z]+ [V|v]essel") %>% 
+  unlist %>% table %>% sort(dec=T)
+bigram[!str_detect(names(bigram), filters)] %>% {.[.>10]}
+
+```
+<br>
+
+### 【B】Wordcloud for bigram
+![bigram.png](png/bigram.png)
+
+
+<br><hr>
+
+```{r}
+trigram = X$text %>% tolower %>% 
+  str_extract_all("[a-z]+ [a-z]+ [V|v]essel") %>% 
+  unlist %>% table %>% sort(dec=T)
+trigram[!str_detect(names(trigram), filters)] %>% {.[.>5]}
+```
+
+<br>
+
+### 【C】Wordcloud for trigram
+![trigram.png](png/trigram.png)
+
+<br><hr>
+
+```{r}
+quogram = X$text %>% tolower %>% 
+  str_extract_all("[a-z]+ [a-z]+ [a-z]+ [V|v]essel") %>% 
+  unlist %>% table %>% sort(dec=T)
+quogram[!str_detect(names(quogram), filters)] %>% {.[.>2]}
+```
+<br>
+
+### 【D】Wordcloud for quogram
+![quogram.png](png/quogram.png)
+
+
+<br><br>
+
+<br><br><br><hr>
+
+
+
+
+
+
+

@@ -1,0 +1,148 @@
+---
+title: Offshore Wind Power Project
+author: 中山大學管理學院 
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+    css: style.css
+---
+
+<hr>
+
+```{r results='hide', message=FALSE, warning=FALSE, echo=F}
+# Formating Codes.  Do not change the codes in this chunk.<br>
+rm(list=ls(all=T))
+knitr::opts_chunk$set(comment = NA)
+knitr::opts_knit$set(global.par = TRUE)
+par(cex=0.8)
+options(scipen=20, digits=5, width=80)
+if(!require(pacman)) install.packages("pacman")
+```
+
+
+```{r results='hide', message=FALSE, warning=FALSE}
+pacman::p_load(dplyr, ggplot2, tm, SnowballC, wordcloud2, RColorBrewer, 
+               plotly, stringr, d3heatmap, htmlwidgets)
+
+```
+
+<br>
+
+### 【A】News Article Corpus Summary
+```{r}
+load('data/X.rdata')
+summary(X)
+```
+
+
+
+```{r}
+par(cex=0.8, mar=c(6,4,4,2))
+hist(X$date, "year", freq=T, main="No. Articles per Year", las=2, xlab="")
+```
+
+```{r}
+par(cex=0.8, mar=c(4,12,4,2))
+table(X$sub) %>% sort %>% 
+  barplot(las=2, horiz=T, main="No. Articles per Subject", xlab="freq")
+```
+
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+X %>% 
+  mutate(year = as.integer(format(date,"%Y"))) %>% 
+  group_by(year, sub) %>% count %>% 
+  ggplot(aes(x=year, y=n, fill=sub)) + 
+  geom_bar(stat="identity", position="fill") +
+  scale_x_continuous(breaks=2009:2019) -> p
+ggplotly(p)
+```
+
+<br><hr>
+
+### 【B】Wordcloud by Subject
+
+##### Business & Finance
+![1.png](png/1.png)
+
+<br><hr>
+
+##### R&D
+![2.png](png/2.png)
+
+
+<br><hr>
+##### Operations & Maintenance
+![3.png](png/3.png)
+
+
+
+<br><hr>
+##### Technology
+![4.png](png/4.png)
+
+
+<br><hr>
+##### Vessels
+![5.png](png/5.png)
+
+
+<br><br><br><hr>
+
+### 【C】ROV 
+
+```{r}
+X$rov = str_count(X$text, " ROV| ROUV")
+rx = xtabs(rov ~ sub + format(date, "%Y"), X) 
+rx
+```
+
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+rx %>% as.data.frame.matrix %>% d3heatmap(T,F, col="Greens")
+```
+
+
+<br><hr>
+
+##### ROV: Business & Finance
+![6.png](png/6.png)
+
+<br><hr>
+##### ROV: R&D
+![7.png](png/7.png)
+
+
+<br><hr>
+##### ROV: Operations & Maintenance
+![8.png](png/8.png)
+
+
+<br><hr>
+##### ROV: Technology
+![9.png](png/9.png)
+
+<br><hr>
+##### ROV: Vessels
+![10.png](png/10.png)
+
+
+<br><br>
+
+<br><br><br><hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
