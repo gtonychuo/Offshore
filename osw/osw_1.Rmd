@@ -12,7 +12,7 @@ output:
 <hr>
 
 ```{r results='hide', message=FALSE, warning=FALSE, echo=F}
-# Formating Codes.  Do not change the codes in this chunk.<br>
+# Formating Codes.  Do not change the codes in this chunk !!
 rm(list=ls(all=T))
 knitr::opts_chunk$set(comment = NA)
 knitr::opts_knit$set(global.par = TRUE)
@@ -21,22 +21,27 @@ options(scipen=20, digits=5, width=80)
 if(!require(pacman)) install.packages("pacman")
 ```
 
+```{r eval=F}
+# only need to execute once !!!
+install.packages("webshot")
+webshot::install_phantomjs()
+```
 
 ```{r results='hide', message=FALSE, warning=FALSE}
 pacman::p_load(dplyr, ggplot2, tm, SnowballC, wordcloud2, RColorBrewer, 
                plotly, stringr, d3heatmap, htmlwidgets)
-
 ```
 
 <br>
 
 ### 【A】News Article Corpus Summary
 ```{r}
-load('data/X.rdata')
-summary(X)
+load("data/X.rdata")
 ```
 
-
+```{r}
+summary(X)
+```
 
 ```{r}
 par(cex=0.8, mar=c(6,4,4,2))
@@ -64,8 +69,39 @@ ggplotly(p)
 
 ### 【B】Wordcloud by Subject
 
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+stops = c(
+  stopwords("en"), "offshore", "wind", "energy", "will", 
+  "said", "also", "can")
+
+WC = function(subject, output, ROV=FALSE, min.freq=25, ...) {
+  X1 = X %>% filter(sub == subject)
+  if(ROV) X1 = subset(X1, str_count(text, "ROV|ROUV")>0)
+  txt = iconv(X1$text, "latin1", "ASCII", sub="")
+  docs <- Corpus(VectorSource(txt))
+  docs <- tm_map(docs, content_transformer(tolower)) 
+  docs <- tm_map(docs, removeNumbers)     # 
+  docs <- tm_map(docs, removeWords,stops) # 
+  docs <- tm_map(docs, removePunctuation) # 
+  docs <- tm_map(docs, stripWhitespace)   # 
+
+  dtm <- TermDocumentMatrix(docs)
+  m <- as.matrix(dtm)
+  v <- sort(rowSums(m),decreasing=TRUE)
+  d<- data.frame(word=names(v), freq=v)
+  hw = wordcloud2(subset(d, freq > min.freq), ... )
+  saveWidget(hw,"temp.html",selfcontained = F)
+  webshot::webshot("temp.html",output,vwidth=800, vheight=600, delay=20)
+  }
+```
+
+
 ##### Business & Finance
+```{r eval=F}
+WC("Business & Finance", "png/1.png", ROV=F, min.freq=200, size=0.6) 
+```
 ![1.png](png/1.png)
+
 
 <br><hr>
 
