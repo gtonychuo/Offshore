@@ -74,33 +74,46 @@ stops = c(
   stopwords("en"), "offshore", "wind", "energy", "will", 
   "said", "also", "can")
 
-WC = function(subject, output, ROV=FALSE, min.freq=25, ...) {
+WC = function(subject, output, ROV=FALSE, min.freq=25, xstop=c(), ...) {
   X1 = X %>% filter(sub == subject)
   if(ROV) X1 = subset(X1, str_count(text, "ROV|ROUV")>0)
   txt = iconv(X1$text, "latin1", "ASCII", sub="")
   docs <- Corpus(VectorSource(txt))
   docs <- tm_map(docs, content_transformer(tolower)) 
   docs <- tm_map(docs, removeNumbers)     # 
-  docs <- tm_map(docs, removeWords,stops) # 
+  docs <- tm_map(docs, removeWords,c(stops, xstop)) # 
   docs <- tm_map(docs, removePunctuation) # 
   docs <- tm_map(docs, stripWhitespace)   # 
 
-  dtm <- TermDocumentMatrix(docs)
-  m <- as.matrix(dtm)
-  v <- sort(rowSums(m),decreasing=TRUE)
-  d<- data.frame(word=names(v), freq=v)
+  dtm = TermDocumentMatrix(docs)
+  m = as.matrix(dtm)
+  v = sort(rowSums(m),decreasing=TRUE)
+  d = data.frame(word=names(v), freq=v)
   hw = wordcloud2(subset(d, freq > min.freq), ... )
   saveWidget(hw,"temp.html",selfcontained = F)
   webshot::webshot("temp.html",output,vwidth=800, vheight=600, delay=20)
+  d
   }
 ```
 
 
 ##### Business & Finance
 ```{r eval=F}
-WC("Business & Finance", "png/1.png", ROV=F, min.freq=200, size=0.6) 
+df = WC("Business & Finance", "png/1.png", ROV=F, min.freq=200, size=0.6, 
+   xstop = c("project", "projects")) 
 ```
 ![1.png](png/1.png)
+
+```{r}
+df = WC("Business & Finance", "png/1.png", ROV=T, min.freq=10, size=0.6, 
+   xstop = c("project", "projects")) 
+
+```
+
+```{r}
+df = df[,c(2,1)]
+write.table(df, file="Rov_Biz.csv", sep="\t", quote=F, row.names=F, col.names=F)
+```
 
 
 <br><hr>

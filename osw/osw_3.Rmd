@@ -31,8 +31,42 @@ A = sapply(split(mx, X$sub), colSums)
 ```
 
 ```{r}
+z = table(X$sub) %>% sort(dec=T) %>% names
+X$sub = factor(X$sub, levels=z)
+table(X$sub)
+```
+
+```{r}
+X$year = format(X$date, "%Y")
+table(X$year)
+```
+
+```{r}
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+A = sapply(split(mx, X$sub), colSums)
 t(A)
 ```
+
+```{r}
+X$ROV = str_count(X$text, "ROV|ROUV")
+```
+
+```{r}
+xtabs(ROV ~ year, X)
+```
+
+```{r}
+xtabs(ROV ~ year, X[mx$Germany > 0,])
+```
+
+```{r}
+sapply(names(mx)[1:10], function(z){
+  xtabs(ROV ~ year, X[mx[,z] > 0 & X$year > 2010,])
+  }) %>% t
+```
+
+
 
 <br><br><br><hr>
 
