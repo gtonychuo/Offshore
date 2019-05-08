@@ -1,0 +1,98 @@
+---
+title: (OSW_5) Subject, Countries, Year
+author: 中山大學管理學院 
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+    css: style.css
+---
+
+```{r}
+rm(list=ls(all=T))
+pacman::p_load(readr, dplyr, ggplot2, stringr, maps, Matrix, d3heatmap, plotly, googleVis)
+load("data/X.rdata")
+```
+
+```{r}
+# pat = paste(iso3166$ISOname, collapse="|")
+# CX = str_extract_all(X$text, regex(pat, ignore.case=TRUE))
+# save(CX, file="data/CX.rdata")
+load("data/CX.rdata")
+```
+
+```{r}
+N9 = unlist(CX) %>% table %>% sort(dec=T) %>% {.[. > 9]} %>% names
+C9 = lapply(CX, match, N9)
+df = do.call(rbind, lapply(1:length(C9), function(i) {
+  if(length(C9[[i]]) > 0) data.frame(i = i, j = C9[[i]])
+  })) 
+df = subset(df, complete.cases(df))
+df$x = 1
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+```
+
+```{r}
+z = table(X$sub) %>% sort(dec=T) %>% names
+X$sub = factor(X$sub, levels=z)
+X$year = format(X$date, "%Y")
+```
+
+### No. Mentions per Subject/Country
+```{r}
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+A = sapply(split(mx, X$sub), colSums)
+t(A)[,1:12]
+```
+
+```{r}
+t(A)[,1:12] %>% as.data.frame.matrix %>% d3heatmap(F,F,col="Greens")
+```
+
+<br><hr>
+
+### Subjects by Country by Year
+```{r}
+df = do.call(rbind, lapply(names(mx)[1:8], function(z){
+  xtabs(~ sub + year, X[mx[,z] > 0 & X$year > 2010 & X$year < 2019, ])[1:8,] %>% t
+  })) %>% data.frame
+```
+
+```{r}
+df = data.frame(
+  country = factor(rep(names(mx)[1:8], each=8), names(mx)[1:8]),
+  year = rep(2011:2018, 8),
+  df)
+df$Total = rowSums(df[,3:10]) 
+```
+
+
+##### Interactive Line Plot
+```{r fig.height=4.5, fig.width=8}
+ggplotly( ggplot(df, aes(x = year, y = R.D, col=country)) +
+  geom_line(lwd=1) +
+  ggtitle("No. Mention in R&D Sub-Category, Top 8 Countries")
+  )
+```
+<br>
+
+##### Fully Interactive Motion Bubble Plot
+```{r results='asis', tidy=FALSE}
+op = options(gvis.plot.tag='chart')
+plot( gvisMotionChart(
+  df, "country", "year", 
+  options=list(width=800, height=600) ))
+```
+
+
+<br><br><br><hr>
+
+
+
+
+
+
+
