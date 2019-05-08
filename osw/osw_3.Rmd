@@ -11,7 +11,7 @@ output:
 
 ```{r}
 rm(list=ls(all=T))
-pacman::p_load(readr, dplyr, ggplot2, stringr, maps, Matrix)
+pacman::p_load(readr, dplyr, ggplot2, stringr, maps, Matrix, d3heatmap)
 load("data/X.rdata")
 ```
 
@@ -47,6 +47,11 @@ mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>%
 A = sapply(split(mx, X$sub), colSums)
 t(A)
 ```
+
+```{r}
+t(A)[,1:12] %>% as.data.frame.matrix %>% d3heatmap(F,F,col="Greens")
+```
+
 
 ```{r}
 X$ROV = str_count(X$text, "ROV|ROUV")
