@@ -1,0 +1,173 @@
+---
+title: Offshore Wind Power Project
+author: 中山大學管理學院 
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+    css: style.css
+---
+
+<hr>
+
+```{r results='hide', message=FALSE, warning=FALSE, echo=F}
+# Formating Codes.  Do not change the codes in this chunk !!
+rm(list=ls(all=T))
+knitr::opts_chunk$set(comment = NA)
+knitr::opts_knit$set(global.par = TRUE)
+par(cex=0.8)
+options(scipen=20, digits=5, width=80)
+if(!require(pacman)) install.packages("pacman")
+```
+
+
+```{r eval=F}
+# only need to execute once !!!
+install.packages("webshot")
+webshot::install_phantomjs()
+```
+
+```{r results='hide', message=FALSE, warning=FALSE}
+pacman::p_load(dplyr, ggplot2, tm, SnowballC, wordcloud2, RColorBrewer, 
+               plotly, stringr, d3heatmap, htmlwidgets,readr, maps, Matrix)
+```
+
+<br>
+
+### 【A】News Article Corpus Summary
+```{r}
+load("data/X.rdata")
+```
+
+```{r}
+summary(X)
+```
+
+
+```{r}
+par(cex=0.8, mar=c(6,4,4,2))
+hist(X$date, "year", freq=T, main="No. Articles per Year", las=2, xlab="")
+```
+
+
+```{r}
+par(cex=0.8, mar=c(4,12,4,2))
+table(X$sub) %>% sort %>% 
+  barplot(las=2, horiz=T, main="No. Articles per Subject", xlab="freq")
+```
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+X %>% 
+  mutate(year = as.integer(format(date,"%Y"))) %>% 
+  group_by(year, sub) %>% count %>% 
+  ggplot(aes(x=year, y=n, fill=sub)) + 
+  geom_bar(stat="identity", position="fill") +
+  scale_x_continuous(breaks=2009:2019) -> p
+ggplotly(p)
+```
+
+
+
+<br><hr>
+
+### 【B】Wordcloud by Subject
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+stops = c(
+  stopwords("en"), "offshore", "wind", "energy", "will", 
+  "said", "also", "can")
+
+WC = function(subject, output, ROV=FALSE, min.freq=25, xstop=c(), ...) {
+  X1 = X %>% filter(sub == subject)
+  if(ROV) X1 = subset(X1, str_count(text, "ROV|ROUV")>0)
+  txt = iconv(X1$text, "latin1", "ASCII", sub="")
+  docs <- Corpus(VectorSource(txt))
+  docs <- tm_map(docs, content_transformer(tolower)) 
+  docs <- tm_map(docs, removeNumbers)     # 
+  docs <- tm_map(docs, removeWords,c(stops, xstop)) # 
+  docs <- tm_map(docs, removePunctuation) # 
+  docs <- tm_map(docs, stripWhitespace)   # 
+
+  dtm = TermDocumentMatrix(docs)
+  m = as.matrix(dtm)
+  v = sort(rowSums(m),decreasing=TRUE)
+  d = data.frame(word=names(v), freq=v)
+  hw = wordcloud2(subset(d, freq > min.freq), ... )
+  saveWidget(hw,"temp.html",selfcontained = F)
+  webshot::webshot("temp.html",output,vwidth=800, vheight=600, delay=20)
+  d
+  }
+```
+
+<br><hr>
+##### ROV: R&D
+![7.png](png/7.png)
+
+<br><hr>
+##### ROV: Technology
+![9.png](png/9.png)
+
+<br><hr>
+##### country v.s subject
+
+```{r}
+pat = paste(iso3166$ISOname, collapse="|")
+CX = str_extract_all(X$text, regex(pat, ignore.case=TRUE))
+N9 = unlist(CX) %>% table %>% sort(dec=T) %>% {.[. > 9]} %>% names
+C9 = lapply(CX, match, N9)
+df = do.call(rbind, lapply(1:length(C9), function(i) {
+  if(length(C9[[i]]) > 0) data.frame(i = i, j = C9[[i]])
+  })) 
+df = subset(df, complete.cases(df))
+df$x = 1
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+A = sapply(split(mx, X$sub), colSums)
+```
+
+```{r}
+z = table(X$sub) %>% sort(dec=T) %>% names
+X$sub = factor(X$sub, levels=z)
+X$year = format(X$date, "%Y")
+```
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+mx = sparseMatrix(i=df$i, j=df$j, x=df$x, dimnames=list(1:10760, N9)) %>% 
+  as.data.frame.matrix
+A = sapply(split(mx, X$sub), colSums)
+t(A[1:12,])
+```
+
+<br><hr>
+
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=9.5}
+t(A)[,1:12] %>% as.data.frame.matrix %>% d3heatmap(F,F,col="Greens")
+```
+
+
+
+<br><br>
+
+<br><br><br><hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
