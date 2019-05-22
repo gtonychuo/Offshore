@@ -1,0 +1,138 @@
+---
+title: "POS trying"
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    highlight: pygments
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r results='hide'}
+# pacman::p_load(dplyr, readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem)
+
+pacman::p_load(dplyr,ggplot2,tm,udpipe,readr,slam,lattice,textclean,Rtsne,textstem,tidytext)
+load("./data/pos_wind.rdata")
+
+wind = read_csv("./test_wind.csv") %>% data.frame
+data(stop_words)
+wind$index = 1:nrow(wind)
+
+
+```
+
+# 正式版，找出文章中的key word
+```{r}
+stats <- keywords_rake(x = pos_wind, term = "token", group = "doc_id", 
+                       relevant = pos_wind$upos %in% c("NOUN", "ADJ"), ngram_max = 5,sep = "-")
+stats = stats[!duplicated(stats$keyword),]
+stats$key <- factor(stats$keyword, levels = rev(stats$keyword))
+
+barchart(key ~ rake, data = head(subset(stats, freq > 10), 30), col = "cadetblue", 
+         main = "Keywords identified by RAKE", 
+         xlab = "Rake")
+
+pos_filter = subset(stats,freq > 5 & rake > 2.5)
+
+pos_filter = pos_filter %>% mutate(key = gsub("-"," ",key))
+
+apply(pos_filter, 1, function(x){
+  wind$text <<- gsub(x[5],x[1],wind$text,ignore.case = T)
+  return(T)
+})
+```
+
+# 斷詞
+```{r}
+toSpace <- content_transformer(function(x,pattern)
+    gsub(pattern,"", x))
+
+dtm = wind$text %>%
+  VectorSource %>% Corpus %>% 
+  tm_map(content_transformer(tolower)) %>% 
+  # tm_map(toSpace,"\n") %>% 
+  tm_map(removePunctuation,preserve_intra_word_dashes = T) %>%
+  tm_map(removeWords, c(stopwords("english"))) %>%
+  # tm_map(stemDocument) %>% 
+  # lemmatize_words%>%
+  DocumentTermMatrix(control = list(wordLengths = c(1,100))) %>%
+  removeSparseTerms(0.998)
+
+
+inspect(dtm[,c("offshorewindfarm","wind")])
+dim(dtm)
+data.frame(inspect(dtm))
+
+findFreqTerms(dtm, 100)
+findAssocs(dtm, "offshorewindfarm", 0.1)
+```
+
+
+
+```{r}
+tf <- apply(dtm, 2, sum) # term frequency
+summary(tf)
+tfidf = tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) *
+  log2(nrow(dtm)/col_sums(dtm > 0))
+summary(tfidf)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.01461 0.05273 0.06761 0.07675 0.08772 2.28141
+dtm2 = dtm[, tfidf > 0.05328]
+dtm2 = dtm2[,order(-col_sums(dtm2))]
+dim(dtm2)
+#10773  3353
+
+dtm2$dimnames$Terms[1:100]
+```
+
+# tSNE
+```{r}
+n = 1000
+tsne = dtm2[, 1:n] %>% as.data.frame.matrix %>% 
+  scale %>% t %>% Rtsne(
+    check_duplicates = FALSE, theta=0.0, max_iter=3200)
+```
+
+```{r}
+Y = tsne$Y              # tSNE coordinates
+d = dist(Y)             # distance matrix
+hc = hclust(d)          # hi-clustering
+K = 100                 # number of clusters 
+g = cutree(hc,K)        # cut into K clusters
+table(g) %>% as.vector %>% sort         # sizes of clusters
+plot(hc)
+rect.hclust(hc, K, border="red")
+```
+
+```{r}
+wc = col_sums(dtm2[,1:n])
+text.size = 0.3 + sqrt(wc/mean(wc))
+range(text.size)
+```
+
+```{r}
+library(randomcoloR)
+library(wordcloud)
+
+
+colors = distinctColorPalette(K)
+svglite::svglite("0521.svg",width = 40, height = 20)
+textplot(
+  Y[,1], Y[,2], colnames(dtm2)[1:n], show=F, 
+  col=colors[g],
+  cex= text.size,
+  font=2)
+dev.off()
+```
+
+
+
+```{r}
+y=udpipe(x = wind[1:100,]$text, doc_id = wind[1:100,]$index,
+            object = "english",tagger = "default", parser = "none")
+x <- udpipe_annotate(ud_model, x = wind$text, doc_id = wind$index)
+x <- as.data.frame(x)
+```

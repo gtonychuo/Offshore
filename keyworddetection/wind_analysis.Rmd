@@ -1,0 +1,322 @@
+---
+title: "離岸風電"
+author: "張家銘"
+date: "`r Sys.time()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,echo=FALSE}
+pacman::p_load(dplyr, readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem)
+wind = read_csv("./0413_news.csv") %>% data.frame
+data(stop_words)
+```
+
+```{r}
+
+# 斷詞後結果
+wind_words_filtered2 <- wind %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words) %>% 
+  count(title,sub,word) %>%
+  group_by(title) %>% 
+  mutate(total=sum(n))%>%
+  filter(total>10) #去除字數小於10的文章
+
+
+word_remove =wind_words_filtered2 %>%
+  group_by(word)  %>%
+  summarise(word_num = sum(n)) %>%
+  filter(word_num<3) %>%
+  arrange(desc(word_num))
+
+
+wind_words_filtered2 = wind_words_filtered2 %>%
+  anti_join(word_remove,by = "word")
+# 有3筆重複兩次，1筆重複4次
+table(wind$title) %>% table()
+# url 皆不重複，但title有重複
+table(wind$url) %>% table()
+
+```
+
+```{r}
+# 畫出token後的詞頻大小
+wind_words_filtered2[2:5] %>%
+  count(word,sort = T) %>% 
+  filter(n>2000) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+```
+# token tf-idf
+```{r}
+# 進行tfidf並排序
+token_tfidf = wind_words_filtered2 %>% 
+  bind_tf_idf(word, title, n) %>%
+  arrange(desc(tf_idf))
+token_tfidf%>%filter(total ==30)%>%arrange(total) %>% group_by(title)
+token_tfidf%>%arrange(desc(n))
+```
+
+
+# bigram
+```{r}
+
+# bigram分好後再切開兩個字
+bigrams_filtered = wind %>%
+  unnest_tokens(bigram,text,token = "ngrams",n=2) %>%
+  count(bigram, sort = TRUE) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>% 
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word)
+
+# bigram with title
+bigrams_filtered_with_title <- wind %>%
+  unnest_tokens(bigram,text,token = "ngrams",n=2) %>%
+  count(title,bigram, sort = TRUE) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>% 
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word) %>%
+  unite(bigram, word1, word2, sep = " ")
+
+# 畫出出現頻率最高的bigram
+bigrams_filtered %>% 
+  unite(bigram, word1, word2, sep = " ") %>% 
+  mutate(bigram = reorder(bigram, n)) %>% 
+  filter(n>500) %>% 
+ggplot(aes(bigram, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+# 畫出字與字的關係圖
+bigram_graph <- bigrams_filtered %>%
+  filter(n > 500) %>%
+  graph_from_data_frame()
+bigram_graph
+
+set.seed(2019)
+ggraph(bigram_graph, layout = "fr") +
+  geom_edge_link(alpha = 0.5) +
+  geom_node_point(alpha = 0.5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1)
+
+ggraph(bigram_graph, layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 end_cap = circle(.07, 'inches')) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()
+  
+# 另外一種寫法use list
+# bigram = tokenize_ngrams(wind$text, n=2,stopwords = stopwords::stopwords("en")) %>%
+#   unlist() %>%
+#   table() %>%
+#   data.frame() %>%
+#   filter(Freq>5) %>%
+#   droplevels() %>% 
+#   arrange(desc(Freq))
+# names(bigram)= c('ngram','Freq')
+# head(bigram,n = 10)
+```
+# bigram tfidf
+```{r}
+bigram_tfidf = bigrams_filtered_with_title %>% 
+  bind_tf_idf(bigram, title, n) %>%
+  arrange(desc(tf_idf))
+
+bigram_tfidf
+```
+
+
+```{r}
+# 字的相關性
+# word_pairs = wind_words_filtered2[,-1] %>% 
+#   mutate(section = row_number() %/% 10) %>% 
+#   filter(section > 0) %>% 
+#   pairwise_count(word, section, sort = TRUE)
+# 
+# word_pairs %>% filter(item1 == "wind")
+```
+
+
+# trigram
+```{r}
+# trigram
+trigrams_filtered = wind %>%
+  unnest_tokens(trigrams,text,token = "ngrams",n=3) %>%
+  count(trigrams, sort = TRUE) %>%
+  separate(trigrams, c("word1", "word2","word3"), sep = " ") %>% 
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word,
+         !word3 %in% stop_words$word)
+
+# 畫出字與字的關係圖
+trigram_graph <- trigrams_filtered %>%
+  filter(n > 75) %>%
+  graph_from_data_frame()
+trigram_graph
+
+set.seed(2019)
+
+```{r}
+# 畫出統計圖
+trigram_graph <- trigrams_filtered %>%
+  filter(n > 300) %>%
+  graph_from_data_frame()
+trigram_graph
+
+set.seed(2019)
+ggraph(trigram_graph, layout = "fr") +
+  geom_edge_link(alpha = 0.5) +
+  geom_node_point(alpha = 0.5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1)
+
+ggraph(trigram_graph, layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 end_cap = circle(.07, 'inches')) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()
+```
+
+# trigram tf-idf
+```{r}
+
+# trigram with title
+trigrams_filtered_with_title <- wind %>%
+  unnest_tokens(bigram,text,token = "ngrams",n=3) %>%
+  count(title,bigram, sort = TRUE) %>%
+  separate(bigram, c("word1", "word2","word3"), sep = " ") %>% 
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word,
+         !word3 %in% stop_words$word) %>%
+  unite(trigram, word1, word2,word3, sep = " ")
+
+trigram_tfidf = trigrams_filtered_with_title %>% 
+  bind_tf_idf(trigram, title, n) %>%
+  arrange(desc(tf_idf))
+
+trigram_tfidf
+```
+
+```{r}
+# rm(list=ls(all=T)); setwd("C:/1/G/osw")
+# pacman::p_load(dplyr, readr)
+# 
+# A = read_csv("data/oswb01.csv") %>% data.frame
+# A = subset(A, !duplicated(A)) # 15207
+# A = A[, 1:2]
+# names(A) = c('url', 'sub')
+# A$sub = factor(A$sub)
+# A$date = as.Date(substring(A$url, 30, 39))
+# A$title = gsub("/$", "", substring(A$url, 41))
+# complete.cases(A) %>% sum     # 15203
+# sapply(A, n_distinct)         # 10773,,14,,2393, 10773
+# unique(A) %>% nrow            # 10779
+# A = A[!duplicated(A$url, fromLast=T), ] # 10773
+# hist(A$date,"quarters",las=2, xlab="",freq=T,
+#      main="No. Articles by Quarter (total=10,773)")
+# par(cex=0.8, mar=c(4,12,4,1))
+# table(A$sub) %>% sort %>% 
+#   barplot(horiz=T, las=2,main="No. Articles by Sub-Category")
+# save(A, file="data/A.rdata")
+
+
+# b = table(wind_words_filtered2$title) %>% table() %>% data.frame()
+# ggplot(b,aes(x=.,y=Freq)) +
+#   geom_bar(stat = "identity") + 
+#   coord_flip()
+# wind_tfidf = wind_words_filtered2 %>% 
+#   bind_tf_idf(word,title,n)
+
+
+
+# 記憶體不夠，寫法有誤
+# hc = dist(wind_tfidf[,5:7], method="euclidean") %>% hclust(method='ward.D')
+# plot(hc)
+
+
+# ggplot(bigram,aes(x=ngram,y=log(Freq))) +
+#   geom_point(alpha=0.5,shape=1) +
+#   geom_text(label=bigram$ngram, nudge_x = 0.25, nudge_y = 0.25, check_overlap = T)
+
+```
+
+
+
+
+```{r}
+# install.packages("rJava")
+# install.packages("qdap", INSTALL_opts = "--no-multiarch")
+# library(qdap)
+dtm = wind$text %>% 
+  iconv(to = "utf-8", sub="") %>% 
+  VectorSource %>% Corpus %>% 
+  tm_map(content_transformer(tolower)) %>% 
+  tm_map(removePunctuation) %>% 
+  tm_map(replace_contraction) %>%
+  tm_map(removeWords, c(stopwords("english"),"“","”","\"","")) %>%
+  tm_map(removeNumbers)%>%
+  # tm_map(stemDocument) %>% 
+ tm_map(stripWhitespace)%>%
+  lemmatize_words%>%
+  DocumentTermMatrix %>% 
+  removeSparseTerms(0.998)
+```
+
+```{r}
+library(slam)
+tfidf = tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) *
+  log2(nrow(dtm)/col_sums(dtm > 0))
+summary(tfidf)
+```
+```{r}
+dtm = dtm[, tfidf > 0.04736 ]
+dtm = dtm[,order(-col_sums(dtm))]
+dim(dtm)
+```
+
+```{r}
+library(Rtsne)
+n = 1000
+tsne = dtm[, 1:n] %>% as.data.frame.matrix %>% 
+  scale %>% t %>% 
+  Rtsne(check_dup=F, theta=0.0, max_iter=3000)
+```
+
+```{r}
+Y = tsne$Y              # tSNE coordinates
+d = dist(Y)             # distance matrix
+hc = hclust(d)          # hi-clustering
+K = 100                 # number of clusters 
+g = cutree(hc,K)        # cut into K clusters
+table(g) %>% as.vector %>% sort         # sizes of clusters
+```
+```{r}
+wc = col_sums(dtm[,1:n])
+sz = 0.15 + sqrt(wc/mean(wc))
+range(sz)
+```
+
+```{r}
+library(randomcoloR)
+library(wordcloud)
+
+colors = distinctColorPalette(K)
+png("plot_tsne_v1.png", width=3200, height=1800)
+textplot(
+  Y[,1], Y[,2], colnames(dtm)[1:n], show=F, 
+  col=colors[g],
+  cex= sz,
+  font=2)
+dev.off()
+```
+
