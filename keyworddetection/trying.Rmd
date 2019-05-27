@@ -14,12 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r results='hide'}
 # pacman::p_load(dplyr, readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem)
 
-pacman::p_load(dplyr,ggplot2,tm,udpipe,readr,slam,lattice,textclean,Rtsne,textstem,tidytext)
-load("./data/pos_wind.rdata")
+pacman::p_load(dplyr,ggplot2,tm,udpipe,readr,slam,lattice,textclean,Rtsne,textstem)
+# load("./data/pos_wind.rdata")
 
 wind = read_csv("./test_wind.csv") %>% data.frame
-data(stop_words)
-wind$index = 1:nrow(wind)
+# wind$index = 1:nrow(wind)
 
 
 ```
@@ -53,34 +52,32 @@ toSpace <- content_transformer(function(x,pattern)
 dtm = wind$text %>%
   VectorSource %>% Corpus %>% 
   tm_map(content_transformer(tolower)) %>% 
-  # tm_map(toSpace,"\n") %>% 
-  tm_map(removePunctuation,preserve_intra_word_dashes = T) %>%
-  tm_map(removeWords, c(stopwords("english"))) %>%
+  tm_map(toSpace,"-pron-") %>%
+  # tm_map(removePunctuation,preserve_intra_word_dashes = T) %>%
+  tm_map(removeWords,stopwords("english")) %>%
   # tm_map(stemDocument) %>% 
   # lemmatize_words%>%
-  DocumentTermMatrix(control = list(wordLengths = c(1,100))) %>%
+  DocumentTermMatrix(control = list(wordLengths = c(3,100))) %>%
   removeSparseTerms(0.998)
 
 
-inspect(dtm[,c("offshorewindfarm","wind")])
+inspect(dtm[,c("offshore_wind_farm","wind")])
 dim(dtm)
-data.frame(inspect(dtm))
 
-findFreqTerms(dtm, 100)
-findAssocs(dtm, "offshorewindfarm", 0.1)
+findFreqTerms(dtm, 1000)
+findAssocs(dtm, "offshore_wind_farm", 0.1)
 ```
 
 
 
 ```{r}
-tf <- apply(dtm, 2, sum) # term frequency
+tf <- tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean)
 summary(tf)
-tfidf = tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) *
-  log2(nrow(dtm)/col_sums(dtm > 0))
+tfidf = tf * log2(nrow(dtm)/col_sums(dtm > 0))
 summary(tfidf)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 # 0.01461 0.05273 0.06761 0.07675 0.08772 2.28141
-dtm2 = dtm[, tfidf > 0.05328]
+dtm2 = dtm[, tfidf >= 0.05328 & tf>=0.010667]
 dtm2 = dtm2[,order(-col_sums(dtm2))]
 dim(dtm2)
 #10773  3353
@@ -119,7 +116,7 @@ library(wordcloud)
 
 
 colors = distinctColorPalette(K)
-svglite::svglite("0521.svg",width = 40, height = 20)
+svglite::svglite("0522.svg",width = 40, height = 20)
 textplot(
   Y[,1], Y[,2], colnames(dtm2)[1:n], show=F, 
   col=colors[g],

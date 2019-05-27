@@ -1,0 +1,78 @@
+---
+title: "處理由keyword為seed的字詞相鄰矩陣"
+author: "Bolun Lin"
+date: "2019年5月23日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE, r,echo=FALSE}
+pacman::p_load(dplyr,readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem,corpus,data.table,spacyr)
+
+```
+
+```{r}
+# load data from python spacy
+wind = read_csv("./wind_pos.csv") %>% data.frame
+#修改後的keyword
+key_word = read_csv("keyword.csv" )%>% data.frame
+```
+
+
+```{r}
+# 修改ㄊkey_word表示形示
+key_word =key_word %>%
+  mutate(keyword = gsub(" ","_",word))
+
+#找到包含keywor的sentence
+filter_sen = sapply(key_word$keyword, function(x){
+  grepl(x, wind$sentence ,fixed=T)
+})
+# 矩陣轉data.frame
+filter_sen=as.data.frame(filter_sen)
+# 找出要留下的句子
+filter_sen = filter_sen %>% 
+  mutate(keep=row_sums(.)>=1)
+# 篩選到wind資料，留下詞性為'NOUN'與'PROPN'，並組合成單一字串
+keep_token = wind %>% 
+  filter(filter_sen$keep ==T) %>% 
+  filter(pos_ %in% c('NOUN','PROPN')) %>% 
+  group_by(sentence) %>% 
+  summarise(token_str = paste(lemma_,collapse=" "))
+
+```
+
+
+```{r}
+
+# 轉成 tdm
+tdm = keep_token$token_str %>%
+  VectorSource %>% Corpus %>% 
+  tm_map(content_transformer(tolower)) %>% 
+  # tm_map(toSpace,"\n") %>% 
+  # tm_map(removePunctuation,preserve_intra_word_dashes = T) %>%
+  tm_map(removeWords, c(stopwords("english"))) %>%
+  # tm_map(lemmatize_strings)%>%
+  # tm_map(stemDocument) %>% 
+  TermDocumentMatrix() %>%
+  removeSparseTerms(0.998)
+
+inspect(tdm)
+```
+
+```{r}
+# 轉成矩陣
+termDocMatrix <- as.matrix(tdm)
+
+# change it to a Boolean matrix
+termDocMatrix[termDocMatrix>=1] <- 1
+# transform into a term-term adjacency matrix
+termMatrix <- termDocMatrix %*% t(termDocMatrix)
+# 顯示keyword的pairwise相鄰矩陣
+keywordMatrix=termMatrix[ row.names(termMatrix) %in% key_word$keyword ,colnames(termMatrix) %in% key_word$keyword]
+
+```
+
