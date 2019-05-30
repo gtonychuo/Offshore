@@ -81,6 +81,7 @@ keywordMatrix=termMatrix[ row.names(termMatrix) %in% key_word$keyword ,colnames(
 ```
 
 ```{r}
+0.21820243 * 150
 n=696; K=0.3
 cx = cor(as(termMatrix[,1:n],"matrix"))
 diag(cx) = 0
