@@ -10,15 +10,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE, r,echo=FALSE}
-pacman::p_load(dplyr,readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem,corpus,data.table,spacyr)
-
+# pacman::p_load(dplyr,readr,tokenizers,ggplot2,tidytext,tidyr,ggraph,igraph,widyr,topicmodels,slam,MASS,wordcloud,randomcoloR,tm,qdap,textstem,corpus,data.table,stringr)
+pacman::p_load(dplyr,readr,tm,slam,reshape2)
 ```
 
 ```{r}
 # load data from python spacy
-wind = read_csv("./wind_pos.csv") %>% data.frame
+wind = read_csv("./wind_pos_new.csv") %>% data.frame
 #修改後的keyword
-key_word = read_csv("keyword.csv" )%>% data.frame
+key_word = read_csv("./keyword_new.csv")%>% data.frame
 ```
 
 
@@ -34,14 +34,18 @@ filter_sen = sapply(key_word$keyword, function(x){
 # 矩陣轉data.frame
 filter_sen=as.data.frame(filter_sen)
 # 找出要留下的句子
-filter_sen = filter_sen %>% 
-  mutate(keep=row_sums(.)>=1)
+filter_sen = filter_sen %>%
+  mutate(keep=rowSums(.)>=1)
 # 篩選到wind資料，留下詞性為'NOUN'與'PROPN'，並組合成單一字串
-keep_token = wind %>% 
-  filter(filter_sen$keep ==T) %>% 
-  filter(pos_ %in% c('NOUN','PROPN')) %>% 
-  group_by(sentence) %>% 
+keep_token = wind %>%
+  filter(filter_sen$keep ==T) %>%
+  filter(pos_ %in% c('NOUN','PROPN')) %>%
+  group_by(sentence) %>%
   summarise(token_str = paste(lemma_,collapse=" "))
+
+# t0 = Sys.time()
+# mx = sapply(wind$sentence, str_detect, fixed(key_word$keyword, ignore_case=T)) %>% t
+# Sys.time() - t0
 
 ```
 
@@ -75,4 +79,22 @@ termMatrix <- termDocMatrix %*% t(termDocMatrix)
 keywordMatrix=termMatrix[ row.names(termMatrix) %in% key_word$keyword ,colnames(termMatrix) %in% key_word$keyword]
 
 ```
+
+```{r}
+n=696; K=0.3
+cx = cor(as(termMatrix[,1:n],"matrix"))
+diag(cx) = 0
+i = which(apply(cx,1,max) > K & apply(cx,2,max) > K)
+cx[lower.tri(cx,T)] = 0
+ex = cx[i,i]
+colnames(ex) = rownames(ex) = 1:length(i)
+edges = subset(melt(ex), value >= K)
+edges$Source = names(i)[edges$Var1]
+edges$Target = names(i)[edges$Var2]
+edges$Type = "Undirected"
+edges$Weight = edges$value
+write.csv(edges[,4:7], "edges4.csv", quote=F, row.names=F,
+          fileEncoding="utf-8")
+```
+
 
