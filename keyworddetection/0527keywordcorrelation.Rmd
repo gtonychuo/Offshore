@@ -70,7 +70,7 @@ inspect(tdm)
 ```{r}
 # 轉成矩陣
 termDocMatrix <- as.matrix(tdm)
-
+as.data.frame(tdm)
 # change it to a Boolean matrix
 termDocMatrix[termDocMatrix>=1] <- 1
 # transform into a term-term adjacency matrix
