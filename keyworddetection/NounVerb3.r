@@ -1,5 +1,5 @@
 library(readr)
-library(readxl)
+# library(readxl)
 library(stringr)
 library(dplyr)
 library(reshape2)
@@ -7,7 +7,7 @@ library(tm)
 
 # K = read_excel("./keyworddetection/10805-Keywords-of-Interest-0520.xlsx")$Keywords
 K = read_csv("./keyworddetection/keyword_new.csv")$word
-Z = read_csv("./keyworddetection/wind_pos_new.csv")
+Z = read_csv("./keyworddetection/offshore_wind_pos.csv")
 # attr(Z, "spec") = NULL
 # Z$pos_ %>% factor
 # Z$is_alpha %>% as.logical()
@@ -35,7 +35,7 @@ nnEdges = do.call(rbind, lapply(which(colSums(mx) > 0), function(i) {
   df }))
 
 filter_nn = nnEdges %>%
-  filter(Weight > 90)
+  filter(Weight > 140)
 
 termmatrix = filter_nn %>% 
   dcast(formula = Target ~ Source,value.var = c("Weight"))
@@ -43,7 +43,6 @@ termmatrix = filter_nn %>%
 rownames(termmatrix) <- as.character(termmatrix$Target)
 colnames(termmatrix)
 termDocMatrix = termmatrix[,-1]
-termDocMatrix[1:10,1:10]
 
 termDocMatrix = as.matrix(termDocMatrix)
 termDocMatrix[is.na(termDocMatrix)] = 0
@@ -51,13 +50,13 @@ termDocMatrix[termDocMatrix>1] = 1
 
 termtermMatrix <- termDocMatrix %*% t(termDocMatrix) 
 
-hc = termtermMatrix %>% dist %>% hclust
+hc = termtermMatrix %>% dist %>% hclust(method = "ward.D2")
 plot(hc)
-k =4
+k = 4
 rect.hclust(hc, k=k, border="red")
 g = cutree(hc,k=k)        # cut into K clusters
 hc_keyword = data.frame(word = hc$labels,label=g)
 table(g) %>% as.vector %>% sort         # sizes of clusters
 
-write.csv(filter_nn, "group4.csv", quote=F, row.names=F,
+write.csv(filter_nn, "group4-1.csv", quote=F, row.names=F,
           fileEncoding="utf-8")

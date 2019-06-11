@@ -13,13 +13,13 @@ index,word
 13,grid
 14,ocorrosion
 15,monitor
-16,crew_transfer_vessels
-18,service_operation_vessels
+16,crew_transfer_vessel
+18,service_operation_vessel
 22,installation
 23,sonar
 24,protection
 25,seabed
-26,auv
+26,AUV
 27,training
 28,underwater
 29,maritime
