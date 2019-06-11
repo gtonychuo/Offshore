@@ -41,3 +41,11 @@ servr::daemon_stop(1)
 # 輸入doc index 可以得知文件屬於最高機率的主題
 which.max(doc_topic_distr[1,])
 
+barplot(doc_topic_distr[1, ], xlab = "topic", 
+        ylab = "proportion", ylim = c(0, 1), 
+        names.arg = 1:ncol(doc_topic_distr))
+
+# 複雜度計算，越低越好
+perplexity(dtm_clean, topic_word_distribution = lda_model$topic_word_distribution,
+           doc_topic_distribution = doc_topic_distr)
+
