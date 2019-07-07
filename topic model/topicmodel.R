@@ -9,7 +9,10 @@ library(text2vec)
 library(ggplot2)
 
 offshore = read_csv("./topic model/offshore_wind_pos.csv")
+offshore_sentence = read_csv("./topic model/0624_offshore_wind_pos_sentence.csv")
 
+X = merge(offshore,offshore_sentence,by = "sentence")
+offshore = X
 # dtm = offshore %>%
 #   group_by(title,text) %>% 
 #   summarise(
@@ -37,18 +40,21 @@ dim(dtm_clean)
 #          control = list(nstart = 5, burnin = 2000, best = TRUE, seed = 1:5))
 # m = LDA(dtm_clean,k = 10,control = list(seed=1234))
 # m
-lda_model = LDA$new(n_topics = 24, doc_topic_prior = 0.1, topic_word_prior = 0.01)
+set.seed(12345)
+lda_model = LDA$new(n_topics = 18, doc_topic_prior = 0.1, topic_word_prior = 0.01)
 doc_topic_distr = 
   lda_model$fit_transform(x = dtm_clean, n_iter = 1000, 
                           convergence_tol = 0.001, n_check_convergence = 25, 
                           progressbar = FALSE)
 # 取得個主題前10重要的字
-lda_model$get_top_words(n = 20, lambda = 1)
+c = lda_model$get_top_words(n = 20, lambda = 0.5)
 
-c =lda_model$topic_word_distribution
+# write.csv(c, "./LDA_nn/LDAvis25/top20words.csv")
+
+save(lda_model,dtm_clean,file = "./lda.rdata")
 
 # 取得視覺化的結果
-lda_model$plot(out.dir = './LDA_nn/LDAvis25')
+lda_model$plot()
 servr::daemon_stop(1)
 # 輸入doc index 可以得知文件屬於最高機率的主題
 which.max(doc_topic_distr[1,])
