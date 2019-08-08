@@ -1,34 +1,47 @@
-# library(topicmodels)
-library(tm)
-# library(reshape2)
+# 匯入基本套件
 options(digits = 10)
-library(dplyr)
-library(readr)
-library(udpipe)
-library(text2vec)
-library(ggplot2)
+pacman::p_load(dplyr,readr,udpipe,text2vec,ggplot2,stringr,tm)
 
+# 匯入資料集
 offshore = read_csv("./topic model/offshore_wind_pos0723.csv")
+entity = read_csv("./topic model/E4.csv")
 
-# dtm = offshore %>%
-#   group_by(title,text) %>% 
-#   summarise(
-#     f = n()
-#   ) %>% dcast(title ~ text,value.var = "f")
-clean_offshore  = offshore %>% filter(pos_ %in% c("PROPN","NOUN") & is_stop == F)
+# 篩選只有名詞的字彙
+clean_offshore  = offshore %>%
+  filter(!(text %in% stopwords()) & is_stop == F & pos_ %in% c("PROPN","NOUN"))
 
-clean_offshore  = offshore %>% filter(!text %in% stopwords() & is_stop == F & pos_ %in% c("PROPN","NOUN"))
-
-x <- document_term_frequencies(offshore,document = "title", term = "lemma_")
+# 轉換文件字頻表成dtm
+x <- document_term_frequencies(clean_offshore,document = "title", term = "lemma_")
 dtm = document_term_matrix(x)
 dim(dtm)
 
-
+# 基本資料篩除
 dtm_clean <- dtm_remove_lowfreq(dtm, minfreq = 20)
 dim(dtm_clean)
 
 dtm_clean <- dtm_remove_tfidf(dtm_clean,cutoff = 0.03)
 dim(dtm_clean)
+
+# 取得詞頻，tf-idf
+feq = txt_freq(offshore$text)
+tfidf <-dtm_tfidf(dtm_clean)
+hist(tfidf, breaks = "scott")
+
+tfidf_ranking = sort(tfidf, decreasing = TRUE) %>% as.data.frame
+colnames(tfidf_ranking) = "tfidf"
+tfidf_ranking$key = rownames(tfidf_ranking)
+
+entity2 =  str_replace_all(entity$name," ","_")
+
+new_words = filter(tfidf_ranking,!(tfidf_ranking$key %in% entity2))
+new_words = left_join(new_words,feq,by="key")
+
+summary(new_words$tfidf)
+summary(new_words$freq)
+
+filterd = filter(new_words,tfidf>0.4 & freq > 100)
+
+write.csv(filterd,"filter_keyworde.csv")
 # dtm_clean <- dtm_remove_tfidf(dtm_clean, top=50)
 # dim(dtm_clean)
 # dtm_clean[1:2,1:10]
@@ -38,7 +51,7 @@ dim(dtm_clean)
 # m = LDA(dtm_clean,k = 10,control = list(seed=1234))
 # m
 set.seed(12345)
-lda_model = LDA$new(n_topics = 18, doc_topic_prior = 0.1, topic_word_prior = 0.01)
+lda_model = LDA$new(n_topics = 24, doc_topic_prior = 0.1, topic_word_prior = 0.01)
 doc_topic_distr = 
   lda_model$fit_transform(x = dtm_clean, n_iter = 1000, 
                           convergence_tol = 0.001, n_check_convergence = 25, 
@@ -46,13 +59,14 @@ doc_topic_distr =
 # 取得個主題前20重要的字
 c = lda_model$get_top_words(n = 20, lambda = 0.5)
 
-write.csv(c, "./0723new/18/top20words.csv")
+
 
 # save(lda_model,dtm_clean,file = "./lda.rdata")
 
 # 取得視覺化的結果
-lda_model$plot(out.dir = './0723new/30')
+lda_model$plot(out.dir = './0728/30')
 servr::daemon_stop(3)
+write.csv(c, "./0728/24/top20words.csv")
 # 輸入doc index 可以得知文件屬於最高機率的主題
 which.max(doc_topic_distr[1,])
 

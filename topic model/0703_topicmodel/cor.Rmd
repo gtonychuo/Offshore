@@ -1,0 +1,83 @@
+---
+title: "離岸風電產學官研網路"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: default
+    css: JH.css
+    social: menu
+    source_code: embed 
+    logo: nsysu48.png
+    favicon: nsysu48.png
+runtime: shiny
+---
+
+```{r}
+pacman::p_load(magrittr,shiny,shinyWidgets,shinythemes,flexdashboard)
+pacman::p_load(visNetwork,reshape2,stringr)
+load("C3.rdata")
+s0 = table(E$class) %>% cumsum %>% as.integer
+s9 = table(E$class)
+```
+
+Column {data-width=25%}
+-------------------------------------
+### Input 
+```{r}
+chooseSliderSkin("Modern")
+sliderInput("K", "顯示連結(%)", 0, 1, 0.2, 0.01)
+
+prettyRadioButtons(
+  "Unit", "段落", choices = list("句"=0, "段"=1, "篇"=2),
+  selected = 0, inline=T, icon=icon("check"), 
+  status="success", animation="jelly")
+
+awesomeCheckboxGroup(
+   "Classes", "類別", 
+   choices = c("COM","COUNTRY","FARM","GOV","KWORD","ORG"),
+   selected = c("COM","FARM","GOV","ORG"),
+   inline = TRUE, status="success")
+
+sliderInput("COM",      "Company", 1, s9[2], c(2,10), 1)
+sliderInput("COUNTRY",  "Country", 1, s9[3],  c(4,7), 1)
+sliderInput("FARM",    "WindFARM", 1, s9[4], c(3,12), 1)
+sliderInput("GOV",    "Govn.Adm.", 1, s9[5],  c(4,8), 1)
+sliderInput("KWORD",   " Keyword", 1, s9[6],  c(3,7), 1)
+sliderInput("ORG", "Organization", 1, s9[7],  c(3,7), 1)
+```
+
+Column {data-width=75%}
+-------------------------------------
+### visNetwork
+```{r}
+renderVisNetwork({
+  s1 = rbind(
+  COM=input$COM, COUNTRY=input$COUNTRY,FARM=input$FARM,
+  GOV=input$GOV, KWORD=input$KWORD, ORG=input$ORG)
+  
+  classes = which(unique(E$class)[2:7] %in% input$Classes)
+  si = do.call(c,lapply(classes, function(i) s0[i]+(s1[i,1]:s1[i,2]) ))
+  x = XX[[ 1 + as.integer(input$Unit) ]][,si]
+  x = t(x) %*% x
+  nodes = data.frame(
+    id = 1:nrow(x), label=E$name[si], title=E$name[si], 
+    group=E$class[si], value=sqrt(diag(x)), 
+    stringsAsFactors=F)
+
+  colnames(x) = rownames(x) = 1:nrow(x)
+  x[lower.tri(x,T)] = 0
+  x = subset(melt(x), value > 0)
+
+  K = 1 - input$K
+  links = subset(x, value >= quantile(value, K))
+  links$value = sqrt(links$value)
+  colnames(links)[1:2] = c("from","to")
+  i = 1:nrow(nodes) %in% unique(c(links[,1], links[,2]))
+  nodes$hidden = !i; nodes$physics = i
+  
+  visNetwork(nodes, links) %>%
+    # visPhysics("forceAtlas2Based") %>% 
+    visLegend(width=0.1, stepX=100, stepY=50) %>% 
+    visInteraction(navigationButtons=T) %>% 
+    visOptions(manipulation=T, highlightNearest=T)
+  })
+```

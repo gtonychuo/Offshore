@@ -1,0 +1,236 @@
+---
+title: '0703'
+author: "Bolun Lin"
+date: "2019年7月3日"
+output: html_document
+---
+```{r}
+
+library(lubridate)
+# offshore = read_csv("./offshore_wind_pos.csv")
+```
+
+
+```{r}
+load("./0703_topicmodel/lda.rdata")
+```
+
+```{r}
+# set.seed(12345)
+# doc_topic_distr = 
+#   lda_model$fit_transform(x = dtm_clean, n_iter = 1000, 
+#                           convergence_tol = 0.001, n_check_convergence = 25, 
+#                           progressbar = FALSE)
+lda_model$get_top_words(n = 20, lambda = 0.5)
+# doc_topic_distr =
+#   lda_model$fit_transform(D, n_iter = 1000, convergence_tol = 1e-5,
+#                           check_convergence_every_n = 100)
+# lda_model$plot()
+# lda_model$plot(out.dir =paste("LDAvisualization",topics), open.browser = TRUE)
+```
+
+## 0703 topic analysis
+```{r}
+library(readr)
+library(lubridate)
+library(tidyr)
+library(googleVis)
+wind = read_csv("./0413_news.csv")
+doc_dataframe =as.data.frame(doc_topic_distr)
+doc_dataframe
+doc_dataframe$index <- as.numeric(rownames(doc_dataframe))
+
+n_distinct(doc_dataframe$index )  #10759
+n_distinct(wind)  #10763
+
+
+W= right_join(wind,doc_dataframe,by="index")
+head(S)
+
+W$date = as.Date(substring(W$url,30,39))
+
+min(W$date , na.rm = TRUE)
+#"2010-02-17"
+max(W$date, na.rm = TRUE)
+##2019-04-12
+S = W[!is.na(W$date) ,]
+colnames(S)
+S = S %>% mutate(quarter = quarters(date)) %>%
+  mutate(quarter = paste(year(date) ,quarter,sep = ""))
+
+S = S %>%
+  group_by(quarter)%>%
+  summarise(total = sum(V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V17,V18),
+    V1 =sum(V1)/total,V2 =sum(V2)/total,V3 =sum(V3)/total,V4 =sum(V4)/total,V5 =sum(V5)/total,V6 =sum(V6)/total,
+            V7 =sum(V7)/total,V8 =sum(V8)/total,V9 =sum(V9)/total,V10 =sum(V10)/total,V11 =sum(V11)/total,V12 =sum(V12)/total,
+            V13 =sum(V13)/total,V14 =sum(V14)/total,V15 =sum(V15)/total,V17 =sum(V17)/total,V18 =sum(V18)/total
+            )
+
+data2 <- gather(S, topic, percent, V1, V2, V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V17,V18)
+library(dplyr)
+colnames(data2)
+data2 = data2 %>% dplyr::select(-total)
+
+
+
+
+data3 = data2 %>%
+   mutate(topic = ifelse(topic =="V1","Vessels",
+                  ifelse(topic =="V2","Enviromental Survey",
+                  ifelse(topic =="V3","European Wind Farm Dynamics",
+                  ifelse(topic =="V4","Metaocean Assessment",
+                  ifelse(topic=="V5","Ocean Energy",
+                  ifelse(topic=="V6","North America Market Dynamics",
+                  ifelse(topic=="V7","Global Market Dynamics",
+                  ifelse(topic=="V8","Underwater Technology",
+                  ifelse(topic=="V9","European Market Dynamics",
+                  ifelse(topic=="V10","Floating Technology",
+                  ifelse(topic=="V11","Grid Connection",
+                  ifelse(topic=="V12","Port Services",
+                  ifelse(topic=="V13","Cable/ Subsea Cable",
+                  ifelse(topic=="V14","Electrical System",
+                  ifelse(topic=="V15","Training",
+                  ifelse(topic=="V16","",
+                  ifelse(topic=="V17","Emergency Handling",
+                  ifelse(topic=="V18","Wind Turbine",topic
+                                              )))))))))))))))))))
+m1 = gvisMotionChart(
+  data3, idvar = "topic", timevar = "quarter",
+  options=list(width=720, height=480) )
+plot(m1)
+
+```
+
+```{r}
+E = read_csv("./0703_topicmodel/E.csv")
+load("./0703_topicmodel/A.rdata")
+
+
+wind[is.na(wind$text),]
+
+E = E%>% filter(class == c("COM","COUNTRY"))
+# E = read.csv("E.csv",stringsAsFactors=F)
+E =  E[!duplicated(E$name),]
+mx = sapply(E$alias, function(z) str_count(wind$text, z) > 0)
+# mx
+class(mx)
+E$freq = Matrix::colSums(mx)
+colnames(mx) = E$name
+
+M =as.data.frame(mx)
+
+index = c(1:nrow(M))
+M$index = index
+wind$index=index
+# wind$text[wind$index==863] %>%  str_count(., ) > 0)
+# sapply(E$alias, function(z) str_count(wind$text[wind$index==863], z) > 0)
+# is.na(M$`Acta Marine`) %>% which  
+
+M <- na.omit(M)
+nrow(M)
+S1 = right_join(M,W,by="index")
+
+
+
+Siemens = S1 %>% select(Siemens,date,V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V17,V18)
+
+Siemens = Siemens[!is.na(Siemens$date) ,]
+
+Siemens = Siemens %>% mutate(quarter = quarters(date)) %>%
+  mutate(quarter = paste(year(date) ,quarter,sep = ""))
+
+ table(Siemens$Siemens,Siemens$quarter)
+
+Siemens = Siemens %>% filter(Siemens)
+  
+
+Siemens = Siemens %>%
+  group_by(quarter)%>%
+  summarise(total = sum(V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V17,V18),
+    V1 =sum(V1)/total,V2 =sum(V2)/total,V3 =sum(V3)/total,V4 =sum(V4)/total,V5 =sum(V5)/total,V6 =sum(V6)/total,
+            V7 =sum(V7)/total,V8 =sum(V8)/total,V9 =sum(V9)/total,V10 =sum(V10)/total,V11 =sum(V11)/total,V12 =sum(V12)/total,
+            V13 =sum(V13)/total,V14 =sum(V14)/total,V15 =sum(V15)/total,V17 =sum(V17)/total,V18 =sum(V18)/total
+            )
+
+
+
+data4 <- gather(Siemens, topic, percent, V1, V2, V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V17,V18)
+library(dplyr)
+colnames(data4)
+data4 = data4 %>% dplyr::select(-total)
+
+
+
+
+data5 = data4 %>%
+   mutate(topic = ifelse(topic =="V1","Vessels",
+                  ifelse(topic =="V2","Enviromental Survey",
+                  ifelse(topic =="V3","European Wind Farm Dynamics",
+                  ifelse(topic =="V4","Metaocean Assessment",
+                  ifelse(topic=="V5","Ocean Energy",
+                  ifelse(topic=="V6","North America Market Dynamics",
+                  ifelse(topic=="V7","Global Market Dynamics",
+                  ifelse(topic=="V8","Underwater Technology",
+                  ifelse(topic=="V9","European Market Dynamics",
+                  ifelse(topic=="V10","Floating Technology",
+                  ifelse(topic=="V11","Grid Connection",
+                  ifelse(topic=="V12","Port Services",
+                  ifelse(topic=="V13","Cable/ Subsea Cable",
+                  ifelse(topic=="V14","Electrical System",
+                  ifelse(topic=="V15","Training",
+                  ifelse(topic=="V16","",
+                  ifelse(topic=="V17","Emergency Handling",
+                  ifelse(topic=="V18","Wind Turbine",topic
+                                              )))))))))))))))))))
+
+m2 = gvisMotionChart(
+  data5, idvar = "topic", timevar = "quarter",
+  options=list(width=720, height=480) )
+plot(m2)
+
+
+# 
+# i = order(E$class, -colSums(mx))
+# E = E[i,]; mx = mx[,i]
+# write.csv(E, "E.csv", row.names=F)
+
+```
+
+```{r}
+E = E %>% filter(class =="COM"||"COUNTRY")
+
+
+wind$text
+
+case_when(
+
+)
+E$alias
+
+
+```
+
+
+```{r}
+## all doc topic distr
+topic_n =18
+doc_topic_distr[c(1:nrow(doc_topic_distr)),]
+table(apply(doc_topic_distr,1,which.max))
+
+## find 1 topic 
+barplot(doc_topic_distr[1, ], xlab = "topic", 
+        ylab = "proportion", ylim = c(0, 1), 
+        names.arg = 1:ncol(doc_topic_distr))
+
+## get word topic
+lda_model$topic_word_distribution[,c(1:nrow(lda_model$topic_word_distribution))]
+table(apply(lda_model$topic_word_distribution,2,which.max))
+
+
+lda_model$get_top_words(n = 10, topic_number = c(1L:topic_n), lambda = 0.5)
+# lda_24_result =lda_model$get_top_words(n = 20, topic_number = c(1L:24), lambda = 0.5)
+
+
+# write.csv(lda_24_result,"lda_24_result.csv",fileEncoding = "utf-8")
+
+```
