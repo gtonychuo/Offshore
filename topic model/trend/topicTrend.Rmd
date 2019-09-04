@@ -15,7 +15,7 @@ runtime: shiny
 pacman::p_load(shinyWidgets,shinythemes,dplyr,googleVis,reshape2)
 load("./C6.rdata")
 X$year = format(X$date,"%Y") %>% factor
-load("./0723_nn_24.rdata")
+load("./0807_nn_24.rdata")
 
 topic_names = c("Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M","Wind Turbines","Test and Verify",	"Talents Training","UK OWF Dynamics","Maritime Engineering","Global OWF Dynamics I","Grid Connection",	"Scientific Researches","Underwater Technology","Global OWF Dynamics II","Energy Issues","Foundations",	"North America Market Dynamics","Vessels	Environmental Survey","Metaocean and Weather Assessment",	"Asian Market Dynamics","Wind Turbines","Business Management Issues I","Business Management Issues II",	"OWF Tenders")
 doc_topic = doc_topic_distr %>% as.data.frame
