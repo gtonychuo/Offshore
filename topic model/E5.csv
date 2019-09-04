@@ -1,0 +1,631 @@
+"freq","class","sub_class","name","tooltip","alias","ignore"
+5557,"COUNTRY",NA,"UK","UK (COUNTRY)","\b(UK|GB)\b|Britain|British|United Kingdom|Great Britain|England",FALSE
+3357,"COUNTRY",NA,"Germany","Germany (COUNTRY)","Germany|German|Deutsch",FALSE
+2715,"COUNTRY",NA,"USA","USA (COUNTRY)","United States|U\.S\.|US\.|US|America|American|\bUSA\b",FALSE
+2026,"COUNTRY",NA,"Scotland","Scotland (COUNTRY)","Scotland|Scottish( (G|g)vernment)?",FALSE
+1683,"COUNTRY",NA,"Denmark","Denmark (COUNTRY)","Denmark|Danish",FALSE
+1639,"COUNTRY",NA,"Netherlands","Netherlands (COUNTRY)","Netherlands|Dutch|Holland",FALSE
+1160,"COUNTRY",NA,"China","China (COUNTRY)","China|Chinese",FALSE
+831,"COUNTRY",NA,"France","France (COUNTRY)","France|French",FALSE
+751,"COUNTRY",NA,"Norway","Norway (COUNTRY)","Norway|Norwegian",FALSE
+633,"COUNTRY",NA,"Ireland","Ireland (COUNTRY)","Ireland|Irish",FALSE
+603,"COUNTRY",NA,"Taiwan","Taiwan (COUNTRY)","Taiwan(ese)?",FALSE
+522,"COUNTRY",NA,"Japan","Japan (COUNTRY)","Japan|Japanese",FALSE
+417,"COUNTRY",NA,"Wales","Wales (COUNTRY)","Wales|Welsh",FALSE
+367,"COUNTRY",NA,"Belgium","Belgium (COUNTRY)","Belgium",FALSE
+313,"COUNTRY",NA,"Canada","Canada (COUNTRY)","Canada|Canadian",FALSE
+305,"COUNTRY",NA,"Spain","Spain (COUNTRY)","Spain|Spanish",FALSE
+297,"COUNTRY",NA,"Sweden","Sweden (COUNTRY)","Sweden|Swedish",FALSE
+289,"COUNTRY",NA,"India","India (COUNTRY)","India",FALSE
+211,"COUNTRY",NA,"Australia","Australia (COUNTRY)","Australia|Australian",FALSE
+497,"FARM",NA,"Hornsea Project One","Hornsea Windfarm (FARM)","Hornsea( Project One)?",FALSE
+413,"FARM",NA,"Walney Extension","Walney Extension Windfarm (FARM)","Walney( Extension)?",FALSE
+392,"FARM",NA,"Norther","Norther Windfarm (FARM)","Norther",FALSE
+376,"FARM",NA,"Beatrice","Beatrice Windfarm (BOWL) (FARM)","Beatrice( Offshore)? Wind ?(F|f)arm( L(td|imited))?|Beatrice|\bBOWL\b",FALSE
+331,"FARM",NA,"Borssele","Borssele Windfarm (FARM)","Borssele",FALSE
+309,"FARM",NA,"Dudgeon","Dudgeon Windfarm (FARM)","Dudgeon",FALSE
+298,"FARM",NA,"Kriegers Flak","Kriegers Flak Windfarm (FARM)","Kriegers Flak|\bKFE\b|\bKFB\b",FALSE
+276,"FARM",NA,"Borkum Riffgrund","Borkum Riffgrund Windfarm (FARM)","Borkum Riffgrund",FALSE
+257,"FARM",NA,"London Array","London Array Windfarm (FARM)","London Array",FALSE
+256,"FARM",NA,"Block Island","Block Island Windfarm (FARM)","Block Island",FALSE
+247,"FARM",NA,"Race Bank","Race Bank Windfarm (FARM)","Race Bank",FALSE
+222,"FARM",NA,"Gwynt y Mor","Gwynt y Mor Windfarm (FARM)","Gwynt y M.r",FALSE
+216,"FARM",NA,"Horns Rev","Horns Rev Windfarm (FARM)","Horns Rev",FALSE
+208,"FARM",NA,"Merkur","Merkur Windfarm (FARM)","Merkur",FALSE
+196,"FARM",NA,"Triton Knoll","Triton Knoll Windfarm (FARM)","Triton Knoll",FALSE
+188,"FARM",NA,"Rampion","Rampion Windfarm (FARM)","Rampion",FALSE
+186,"FARM",NA,"Gemini","Gemini Windfarm (FARM)","Gemini",FALSE
+177,"FARM",NA,"Burbo Bank Extension","Burbo Bank Extension Windfarm (FARM)","Burbo Bank Extension",FALSE
+176,"FARM",NA,"East Anglia ONE","East Anglia ONE Windfarm (FARM)","East Anglia ONE",FALSE
+175,"FARM",NA,"Wikinger","Wikinger Windfarm (FARM)","Wikinger",FALSE
+170,"FARM",NA,"Dogger Bank","Dogger Bank Windfarm (FARM)","Dogger Bank",FALSE
+169,"FARM",NA,"Greater Gabbard","Greater Gabbard Windfarm (FARM)","Greater Gabbard",FALSE
+167,"FARM",NA,"Sheringham Shoal","Sheringham Shoal Windfarm (FARM)","Sheringham( Shoal)?",FALSE
+156,"FARM",NA,"Westermost Rough","Westermost Rough Windfarm (FARM)","Westermost Rough",FALSE
+152,"FARM",NA,"Irish Sea","Irish Sea Windfarm (FARM)","Irish Sea",FALSE
+148,"FARM",NA,"Sandbank","Sandbank Windfarm (FARM)","Sandbank",FALSE
+143,"FARM",NA,"Anholt","Anholt Windfarm (FARM)","Anholt",FALSE
+143,"FARM",NA,"Gode Wind","Gode Wind Windfarm (FARM)","Gode Wind",FALSE
+142,"FARM",NA,"Hollandse Kust","Hollandse Kust Windfarm (FARM)","Hollandse Kust( \((N|n)oord\))?( \((Z|z)uid\))?",FALSE
+137,"FARM",NA,"Arkona","Arkona Windfarm (FARM)","Arkona",FALSE
+135,"FARM",NA,"Rentel","Rentel Windfarm (FARM)","Rentel",FALSE
+133,"FARM",NA,"Veja Mate","Veja Mate Windfarm (FARM)","Veja Mate",FALSE
+123,"FARM",NA,"Global Tech","Global Tech Windfarm (FARM)","Global Tech",FALSE
+121,"FARM",NA,"DanTysk","DanTysk Windfarm (FARM)","DanTysk",FALSE
+121,"FARM",NA,"Atlantis","Atlantis (FARM)","Atlantis",FALSE
+113,"FARM",NA,"Hohe See","Hohe See Windfarm (FARM)","Hohe See",FALSE
+108,"FARM",NA,"BARD","BARD Windfarm (FARM)","BARD( (O|o)ffshore 1)|\bBARD\b",FALSE
+104,"FARM",NA,"Alpha Ventus","FARM (FARM)","(A|a)lpha (V|v)entus",FALSE
+100,"FARM",NA,"Butendiek","Butendiek Windfarm (FARM)","Butendiek",FALSE
+99,"FARM",NA,"Humber Gateway","Humber Gateway Windfarm (FARM)","Humber Gateway",FALSE
+92,"FARM",NA,"Deutsche Bucht","Deutsche Bucht Windfarm (FARM)","Deutsche Bucht",FALSE
+90,"FARM",NA,"Duddon Sands","Duddon Sands Windfarm (FARM)","Duddon Sands",FALSE
+85,"FARM",NA,"Lincs","Lincs Windfarm (FARM)","Lincs",FALSE
+72,"FARM",NA,"Ormonde","Ormonde Windfarm (FARM)","Ormonde",FALSE
+70,"FARM",NA,"Hywind Scotland","Hywind Scotland (FARM)","Hywind Scotland",FALSE
+66,"FARM",NA,"Neart Na Gaoithe","Neart Na Gaoithe Windfarm (FARM)","Neart (N|n)a Gaoithe",FALSE
+53,"FARM",NA,"Trianel Windpark Borkum","Trianel Windpark Borkum (FARM)","Trianel Windpark Borkum",FALSE
+45,"FARM",NA,"Vesterhav Nord","Vesterhav Nord (FARM)","Vesterhav Nord",FALSE
+44,"FARM",NA,"Nissum Bredning","Nissum Bredning Windfarm (FARM)","Nissum Bredning",FALSE
+32,"FARM",NA,"SEM-REV","SEM-REV experimental test site (FARM)","SEM-REV( experimental)?( test)?( site)?( \(WTIV\))?|\bSEM\b",FALSE
+30,"FARM",NA,"ICOL","Inch Cape Offshore Limited (FARM)","Inch Cape Offshore Limited( \(ICOL\))?|\bICOL\b",FALSE
+22,"FARM",NA,"WFA","WindFloat Atlantic (FARM)","WindFloat Atlantic",FALSE
+12,"FARM",NA,"Galloper","Galloper Windfarm (FARM)","Galloper Offshore Wind Farm",FALSE
+327,"FINANCE",NA,"Carbon Trust","Carbon Trust (FINANCE)","Carbon Trust",FALSE
+277,"FINANCE",NA,"Crown Estate","Crown Estate (FINANCE)","Crown Estate",FALSE
+116,"FINANCE",NA,"EIB","European Investment Bank (FINANCE)","European Investment Bank|\bEIB\b",FALSE
+116,"FINANCE",NA,"GIB","Green Investment Bank UK (FINANCE)","Green Investment Bank|\bGIB\b",FALSE
+114,"FINANCE",NA,"Scottish Enterprise","Scottish Enterprise (FINANCE)","Scottish Enterprise",FALSE
+79,"FINANCE",NA,"Balfour Beatty","Balfour Beatty Investments Ltd (FINANCE)","Balfour Beatty( Investments)?( Ltd)?",FALSE
+76,"FINANCE",NA,"Vanguard","Vanguard Group Inc. (FINANCE)","Vanguard",FALSE
+72,"FINANCE",NA,"STX","STX Group (FINANCE)","\bSTX( [A-Z][a-z]+){0,2}",FALSE
+72,"FINANCE",NA,"Siemens Financial Services","Siemens Financial Services (FINANCE)","Siemens Financial Services?",FALSE
+71,"FINANCE",NA,"Capital Partners","Capital Partner Companies (FINANCE)","Capital Partners",FALSE
+68,"FINANCE",NA,"Finance","Finance Companies (FINANCE)","Finance",FALSE
+31,"FINANCE",NA,"PKA","Denmark's pension fund PKA (FINANCE)","(Denmark's)?( (p|P)ension)?( (F|f)und)? PKA|PKA( P|p)ension|\bPKA\b",FALSE
+30,"FINANCE",NA,"SDIC","SDIC Power of China (FINANCE)","SDIC (P|p)ower (o|O)f (C|c)hina|\bSDIC\b",FALSE
+410,"GOV",NA,"DOE","Department of Energy (GOV)","Department of Energy|\bD(O|o)E\b",FALSE
+398,"GOV",NA,"BOEM","Bureau of Ocean Energy Management (GOV)","Bureau of Ocean Energy Management(, Regulation and Enforcement)?|\bBOEM(RE)?\b",FALSE
+343,"GOV",NA,"EIA","Environmental Impact Assessment (GOV)","(E|e)nvironmental( (I|i)mpact)? (A|a)ssessments?|\bE(I)?A\b",FALSE
+246,"GOV",NA,"Ofgem","Ofgem (GOV)","Ofgem",FALSE
+207,"GOV",NA,"EC","European Commission (GOV)","European Commission|\bEC\b",FALSE
+130,"GOV",NA,"DECC","Department of Energy and Climate Change (GOV)","Department of Energy and Climate Change|\bDECC\b",FALSE
+116,"GOV",NA,"HSE","Health Safety and Environment (GOV)","Health,? Safety,?( and)? Environment,?(al)?|\bHSEQ?\b",TRUE
+99,"GOV",NA,"MOEA","Ministry of Economic Affairs (GOV)","(M|m)inistr(y|ies) (for|of) (E|e)conomic (A|a)ffairs|\bMOEA\b",FALSE
+89,"GOV",NA,"BoP","Balance of Plant (GOV)","(B|b)alance of (P|p)lant|\bBoP\b",FALSE
+86,"GOV",NA,"DEA","Danish Energy Agency (GOV)","Danish Energy Agency|\bDEA\b",FALSE
+76,"GOV",NA,"Marine Scotland","Marine Scotland (GOV)","Marine Scotland",FALSE
+72,"GOV",NA,"EEZ","Exclusive Economic Zone (GOV)","Exclusive Economic Zone|\bEEZ\b",FALSE
+67,"GOV",NA,"BSH","Maritime and Hydrographic Agency German (GOV)","(Federal )?Maritime and Hydrographic Agency|\bBSH\b",FALSE
+63,"GOV",NA,"MMO","Marine Management Organisation (GOV)","Marine Management Organi(s|z)ation|\bMMO\b",FALSE
+55,"GOV",NA,"Planning Inspectorate","Planning Inspectorate UK (GOV)","Planning Inspectorate",FALSE
+54,"GOV",NA,"STEM","Science Technology Engineering and Maths (GOV)","Science, Technology, Engineering and Maths|STEM( Ambassadors?| Centre)?",FALSE
+53,"GOV",NA,"MCA","Maine Composites Alliance (GOV)","Maine Composites Alliance|\bMCA\b",FALSE
+53,"GOV",NA,"BPU","Board of Public Utilities (GOV)","Board of Public Utilities|\bBPU\b",FALSE
+49,"GOV",NA,"ERDF","European Regional Development Fund (GOV)","European Regional Development Fund|\bERDF\b",FALSE
+44,"GOV",NA,"NOAA","National Oceanic and Atmospheric Administration (GOV)","National (Oceanic|Oceanographic) and Atmospheric Administration|\bNOAA\b",FALSE
+40,"GOV",NA,"BNetzA","Federal Network Agency (GOV)","Federal Network Agency|\bBNetzA\b",FALSE
+40,"GOV",NA,"BEIS","Dept. Business Energy and Industrial Strategy (GOV)","(Department of |Secretary of State for )Business, Energy and Industrial Strategy|\bBEIS\b",TRUE
+38,"GOV",NA,"DCO","Development Consent Order (GOV)","(D|d)evelopment (C|c)onsent (O|o)rder|\bDCO\b",FALSE
+36,"GOV",NA,"ADEME","French Environment and Energy Management Agency (GOV)","Fr(ench|ance's) Environment and Energy Management Agency|\bADEME\b",FALSE
+36,"GOV",NA,"EMR","Electricity Market Reform (GOV)","(Energy|Electricity) Market Reform|\bEMR\b",TRUE
+35,"GOV",NA,"SEAI","Sustainable Energy Authority of Ireland (GOV)","Sustainable Energy Authority of Ireland( \(SEAI\))?|\bSEAI\b",FALSE
+29,"GOV",NA,"PWEP","Perth Wave Energy Project (GOV)","Perth Wave Energy Project|\bPWEP\b",FALSE
+28,"GOV",NA,"BMWi","Ministry of Economics Affairs and Energy (GOV)","Federal Ministry (of|for) Economics?( Affairs)?( and Energy)?|\bBMWi\b",FALSE
+27,"GOV",NA,"FEED","Front End Engineering Design (GOV)","(F|f)ront (E|e)nd (E|e)ngineering (D|d)esign|\bFEED\b",FALSE
+21,"GOV",NA,"National Energy Agreement","National Energy Agreement (GOV)","National Energy Agreement",FALSE
+728,"INST",NA,"ORE","Offshore Renewable Energy (INST)","Offshore Renewable Energy|\bORE\b",TRUE
+357,"INST",NA,"ORE Catapult","Offshore Renewable Energy Catapult (INST)","(Offshore Renewable Energy|ORE) Catapult",FALSE
+260,"INST",NA,"NAREC","National Renewable Energy Centre (INST)","National Renewable Energy Centre|\bNAREC\b",TRUE
+230,"INST",NA,"EMEC","European Marine Energy Centre (INST)","European Marine Energy Cent(re|er)|\bEMEC\b",FALSE
+189,"INST",NA,"EOWDC","European Offshore Wind Development Center (INST)","European Offshore Wind Deployment Centre|\bEOWDC\b",FALSE
+182,"INST",NA,"EWEA","European Wind Energy Associatio (INST)","European Wind Energy Association|\bEWEA\b",FALSE
+137,"INST",NA,"IWES","Institute for Wind Energy Systems (INST)","Institute for Wind Energy Systems|\bIWES\b",FALSE
+135,"INST",NA,"ETI","Energy Technologies Institute (INST)","Energy Technologies Institute|\bETI\b",FALSE
+132,"INST",NA,"ECN","Energy research center of the Netherlands (INST)","Energy (R|r)esearch Cent(re|er) of the Netherlands|Ecole Centrale( de) Nantes|\bECN\b",FALSE
+128,"INST",NA,"GWO","Global Wind Organizarion (INST)","Global Wind Organistion|\bGWO\b",FALSE
+127,"INST",NA,"FORCE","Fundy Ocean Research Center for Energy (INST)","Fundy Ocean Research Center for Energy|\bFORCE\b",FALSE
+118,"INST",NA,"IEC","International Electrotechnical Commi(ttee|ssion) (INST)","International Electrotechnical Commi(ttee|ssion)|\bIEC\b",FALSE
+97,"INST",NA,"NREL","National Renewable Energy Laboratory (INST)","National Renewable Energy Laboratory|\bNREL\b",FALSE
+89,"INST",NA,"SCORE","Solent Offshore Renewable Energy Council (INST)","Solent Offshore Renewable Energy (Council|Consortium)|\bSCORE\b",FALSE
+86,"INST",NA,"ABP","Associated British Ports (INST)","Associated British Ports?|\bABP\b",FALSE
+84,"INST",NA,"IEA","International Energy Agency (INST)","International Energy Agency|\bIEA\b",FALSE
+80,"INST",NA,"NYSERDA","New York State Energy Research and Development Authority (INST)","New York State Energy Research( and)? Development Authority|\bNYSERDA\b",FALSE
+74,"INST",NA,"ISO","International Organization for Standardization (INST)","\bISO\b",FALSE
+58,"INST",NA,"IRENA","International Renewable Energy Agency (INST)","International Renewable Energy Agency|\bIRENA\b",FALSE
+57,"INST",NA,"HR Wallingford","HR Wallingford (INST)","HR Wallingford('s)?",FALSE
+52,"INST",NA,"OWI","OWI Lab. (INST)","\bOWI(( |-)Lab)?\b",FALSE
+46,"INST",NA,"HIE","Highlands and Islands Enterprise (INST)","Highlands and Islands Enterprise( \(HIE\))?|\bHIE\b",FALSE
+46,"INST",NA,"LEP","Local Enterprise Partnership (INST)","Local Enterprise Partnership|\bLEP\b",FALSE
+44,"INST",NA,"NEDO","New Energy and Industrial Technology Development Organisation (INST)","New Energy and Industrial Technology Development Organization|\bNEDO\b",FALSE
+40,"INST",NA,"LORC","Lindo Offshore Renewables Center (INST)","Lindoe Offshore Renewables Center|\bLORC\b",FALSE
+40,"INST",NA,"IMCA","International Marine Contractors Association (INST)","(I|i)nternational (M|m)arine (C|c)ontractors (A|a)ssociation|\bIMCA\b",FALSE
+39,"INST",NA,"DHI","Danish Hydraulic Institute (INST)","\bDHI\b",FALSE
+37,"INST",NA,"AWEA","American Wind Energy Association (INST)","American Wind Energy Association|\bAWEA\b",FALSE
+37,"INST",NA,"MARIN","Maritime Research Institute Netherlands (INST)","Maritime Research Institute Netherlands|\bMARIN\b",FALSE
+36,"INST",NA,"OERA","Offshore Energy Research Association (INST)","Offshore Energy Research Association|\bOERA\b",FALSE
+34,"INST",NA,"PNNL","Pacific Northwest National Lab. (INST)","Pacific Northwest National Laboratory|\bPNNL\b",FALSE
+33,"INST",NA,"WEA","Wind Energy Association (INST)","\b[^AEW]WEA\b|[BCDF-VX-Z][a-z]+ Wind Energy Association",FALSE
+33,"INST",NA,"EPSRC","Engineering and Physical Sciences Research Council (INST)","Engineering (and|&) Physical Sciences Research Council|\bEPSRC\b",FALSE
+30,"INST",NA,"IMO","International Maritime Organization (INST)","International Maritime Organization|\bIMO\b",FALSE
+30,"INST",NA,"Pike","Pike Research (INST)","Pike Research",FALSE
+28,"INST",NA,"Wave Energy Scotland","Wave Energy Scotland (INST)","Wave Energy Scotland",FALSE
+28,"INST",NA,"NWA","The National Workboat Association (INST)","The National Workboat Association( \(NWA\))?|\bNWA\b",FALSE
+25,"INST",NA,"Marine Institute","Marine Institute (INST)","Marine Institute",FALSE
+25,"INST",NA,"Sandia","Sandia National Lab. (INST)","Sandia National Laboratories|\bSandia\b",FALSE
+23,"INST",NA,"NERC","Natural Environment Research Council (INST)","Natural Environment Research Council|\bNERC\b",FALSE
+21,"INST",NA,"Navigant","Navigant Research (INST)","Navigant Research",FALSE
+20,"INST",NA,"Norstec Academy","Norstec Academy (INST)","Norstec Academy",FALSE
+18,"INST",NA,"WWEA","World Wind Energy Association (INST)","World Wind Energy Association|\bWWEA\b",FALSE
+16,"INST",NA,"DyNaLab","Dynamic Nacelle Testing Lab. (INST)","Dynamic Nacelle Testing Laboratory|\bDyNaLab\b",FALSE
+15,"INST",NA,"GWEC","Global Wind Energy Council (INST)","Global Wind Energy Council|\bGWE\b",FALSE
+10,"INST",NA,"GE.Global","GE Global Research (INST)","GE Global Research",FALSE
+9,"INST",NA,"IDCORE","Industrial Doctorate Centre for ORE (INST)","Industrial (Doctora(l|te) Centre|CDT) (in|for) Offshore Renewable Energy|IDCORE",FALSE
+9,"INST",NA,"ERI","Environmental Research Institute (INST)","Environmental Research Institute|\bERI\b",FALSE
+13526,"KWORD",NA,"turbine","turbine (KWORD)","(T|t)urbine",FALSE
+7048,"KWORD",NA,"system","system (KWORD)","(S|s)ystem",FALSE
+6890,"KWORD",NA,"cable","cable (KWORD)","(C|c)able",FALSE
+6194,"KWORD",NA,"installation","installation (KWORD)","(I|i)nstallation",FALSE
+6135,"KWORD",NA,"technology","technology (KWORD)","(T|t)echnolog(y|ies)",FALSE
+3847,"KWORD",NA,"grid","grid (KWORD)","(G|g)rid",FALSE
+3689,"KWORD",NA,"foundation","foundation (KWORD)","(F|f)oundation",FALSE
+1756,"KWORD",NA,"blade","blade (KWORD)","(B|b)lade",FALSE
+1673,"KWORD",NA,"testing","testing (KWORD)","(T|t)esting",FALSE
+1592,"KWORD",NA,"survey","survey (KWORD)","(S|s)urvey",FALSE
+1465,"KWORD",NA,"training","training (KWORD)","(T|t)raining",FALSE
+1226,"KWORD",NA,"O&M","O&M (KWORD)","O&M|(O|o)perations? (and|&) (M|m)aintenance",FALSE
+1147,"KWORD",NA,"monitor","monitor (KWORD)","(M|m)onitor",FALSE
+1049,"KWORD",NA,"jacket","jacket (KWORD)","(J|j)acket",FALSE
+1042,"KWORD",NA,"monopile","monopile (KWORD)","monopile|Monopile|mono pile|Mono pile",FALSE
+993,"KWORD",NA,"seabed","seabed (KWORD)","(S|s)ea( )?bed",FALSE
+823,"KWORD",NA,"maritime","maritime (KWORD)","(M|m)aritime",FALSE
+712,"KWORD",NA,"protection","protection (KWORD)","(P|p)rotection",FALSE
+683,"KWORD",NA,"inspection","inspection (KWORD)","(I|i)nspection",FALSE
+430,"KWORD",NA,"underwater","underwater (KWORD)","(U|u)nder( )?water",FALSE
+402,"KWORD",NA,"ROV/AUV","remotely operated vehicle (KWORD)","((R|r)emotely (O|o)perated|(A|a)utonomous (U|u)nderwater) (V|v)ehicle|\b(ROV|AUV)\b",FALSE
+129,"KWORD",NA,"corrosion","corrosion (KWORD)","(C|c)orrosion",FALSE
+115,"KWORD",NA,"drone","drone (KWORD)","(D|d)rone",FALSE
+100,"KWORD",NA,"sonar","sonar (KWORD)","(S|s)onar",FALSE
+1702,"LOC",NA,"North Sea","North Sea (LOC)","North Sea",FALSE
+574,"LOC",NA,"Baltic","Baltic Seas (LOC)","Baltic( Seas?)?",FALSE
+339,"LOC",NA,"East Anglia","East Anglia (LOC)","East Anglia",TRUE
+237,"LOC",NA,"New Jersey","New Jersey (LOC)","New Jersey",FALSE
+226,"LOC",NA,"Rhode Island","Rhode Island (LOC)","Rhode Island",FALSE
+205,"LOC",NA,"North America","North America (LOC)","North America",FALSE
+160,"LOC",NA,"Nova Scotia","Nova Scotia (LOC)","Nova Scotia",FALSE
+122,"LOC",NA,"Island of Borkum","Island of Borkum (LOC)","Island of Borkum",TRUE
+102,"LOC",NA,"California","California (LOC)","California",FALSE
+98,"LOC",NA,"Isle of Wight","Isle of Wight (LOC)","Isle of Wight",TRUE
+91,"LOC",NA,"Port of Esbjerg","Port of Esbjerg (LOC)","Port of Esbjerg",FALSE
+73,"LOC",NA,"Asia Pacific","Asia Pacific (LOC)","Asia Pacific",TRUE
+32,"LOC",NA,"COSCO Nantong Shipyard","COSCO Nantong Shipyard (LOC)","COSCO( \(?Nan(t|T)ong\)?)?( (S|s)hipyard)?( \(COSCO\))?|\bCOSCO\b""",FALSE
+32,"LOC",NA,"REBO","Renewable Energy Base Oostende (LOC)","Renewable Energy Base Oostende( \(REBO\))?|\bREBO\b",FALSE
+30,"LOC",NA,"North Norfolk","North Norfolk cosat (LOC)","North Norfolk( coast)",FALSE
+26,"LOC",NA,"BOW Terminal","BOW Terminal (LOC)","BOW Terminal('s)?",FALSE
+2984,"ORG","Turbine","SGRE","Siemens Gamesa (ORG:Turbine)","Siemens Gamesa( Renewable Energy)?|Siemens Wind Power( Service)?|Siemens(?!=( AG| Industry| Financial))|\bSGRE\b",FALSE
+2052,"ORG","Developer","Orsted","Orsted/Dong (ORG:Developer)","DONG Energy Wind Power|Dong Energy|\b(.rsted|DONG|Dong)\b",FALSE
+943,"ORG","Others","TenneT","TenneT TSO GmbH (ORG:Others)","TenneT",FALSE
+883,"ORG","Turbine","MHI","MHI Vestas (ORG:Turbine)","MHI( |-)Vestas|\bMHI\b",FALSE
+569,"ORG","Others","ABB","ABB Group (ORG:Others)","ABB Group|ABB Power Systems|\bABB\b",FALSE
+547,"ORG","Developer","E.ON","E.ON SE (ORG:Developer)","E\.ON SE|E\.ON",FALSE
+512,"ORG","Services","DNV-GL","DNV-GL Management Service (ORG:Services)","DNV( |-)GL|GL Garrad Hassan",FALSE
+473,"ORG","Turbine","GE","General Electric (ORG:Turbine)","GE Renewable Energy|(G|g)eneral (E|e)lectric|\bGE\b",FALSE
+473,"ORG","Engineering","Boskalis","Royal Boskalis Westminister N.V. (ORG:Engineering)","(VolkerWessels |Royal )?Boskalis( Marine Solutions| Westminster( NV| N\.V\.)?)?|\bV(B|S)MS\b",FALSE
+459,"ORG","Engineering","Van Oord","Van Oord (ORG:Engineering)","(V|v)an Oord",FALSE
+409,"ORG","PowerCo","RWE","RWE Innogy UK (ORG:PowerCo)","RWE Innogy|RWE International SE|RWE Innogy UK|\bRWE\b",FALSE
+384,"ORG","NEW","Damen","Damen (ORG:NEW)","Damen",FALSE
+355,"ORG","Developer","Adwen/Areva","Adwen / Areva Wind GmbH (ORG:Developer)","A(reva|dwen)( Wind)?( GmbH)?",TRUE
+335,"ORG","Developer","SSE","Scottish & Southern Energy (ORG:Developer)","Scottish( &| and)? Southern (Energy|Electric)|\bSSE\b",FALSE
+309,"ORG","PowerCo","National Grid","National Grid plc. (ORG:PowerCo)","National Grid",FALSE
+301,"ORG","NEW","Nexans","Nexans (ORG:NEW)","Nexans",FALSE
+293,"ORG","NEW","A2SEA","A2SEA (ORG:NEW)","A2SEA",FALSE
+276,"ORG","PowerCo","EDF","EDF Energy Renewables (ORG:PowerCo)","EDF(-| )EN|EDF( Energ(y|ies))?( Renewables)?",FALSE
+268,"ORG","Engineering","DEME","DEME Group (ORG:Engineering)","\bDEME( Group)?\b",FALSE
+264,"ORG","NEW","CWind","CWind (ORG:NEW)","CWind",FALSE
+246,"ORG","Engineering","Jan De Nul","Jan De Nul Group (ORG:Engineering)","jan de nul( group)?",TRUE
+245,"ORG","Cable","JDR","JDR Cable Systems (ORG:Cable)","JDR Cable Systems|\bJDR\b",FALSE
+241,"ORG","NEW","Senvion","Senvion (ORG:NEW)","Senvion",FALSE
+232,"ORG","Consultant","EWE","EWE AG (ORG:Consultant)","\bEWE( AG\.?)?",FALSE
+225,"ORG","Developer","SPR","ScottishPower Renewables (ORG:Developer)","Scottish ?Power Renewables|\bSPR\b",FALSE
+217,"ORG","Engineering","GMS(L)","Global Marine Group (ORG:Engineering)","Global Marine( [A-Z][a-z]+)*|\bGMSL?\b",FALSE
+212,"ORG","Engineering","SHL","Seaway Heavy Lifting (ORG:Engineering)","Seaway Heavy Lifting|\bSHL\b",FALSE
+209,"ORG","Engineering","Olsen Windcarrier","Olsen Windcarrier (ORG:Engineering)","Olsen Windcarrier",FALSE
+175,"ORG","Training","Maersk","Maersk Group (ORG:Training)","Maersk(?! Connector)",FALSE
+174,"ORG","NEW","Eneco","Eneco (ORG:NEW)","Eneco",FALSE
+173,"ORG","Developer","CIP","Copenhagen Infrastructure Partners (ORG:Developer)","(Copenhagen )?Infrastructure Partners|\bCIP\b",FALSE
+171,"ORG","Others","Carnegie","Carnegie (ORG:Others)","Carnegie",FALSE
+149,"ORG","NEW","Elia","Elia (ORG:NEW)","Elia",FALSE
+142,"ORG","Cable","NKT","NKT (Holding) A/S (ORG:Cable)","\bNKT\b",FALSE
+141,"ORG","Engineering","SOC","Siem Offshore Contractors GmbH (ORG:Engineering)","Siem Offshore( Contractors( GmbH )?)?|Seaway Offshore Cables|\bSOC\b",FALSE
+140,"ORG","NEW","Forewind","Forewind (ORG:NEW)","Forewind",FALSE
+136,"ORG","Developer","RES","RES Group (ORG:Developer)","RES Offshore|\bRES\b",FALSE
+136,"ORG","NEW","Tekmar","Tekmar (ORG:NEW)","Tekmar",FALSE
+131,"ORG","NEW","DeepOcean","DeepOcean (ORG:NEW)","DeepOcean",FALSE
+127,"ORG","Others","OPT","Ocean Power Technologies (ORG:Others)","Ocean Power Technologies|\bOPT\b",FALSE
+124,"ORG","Engineering","IHC","Royal IHC (ORG:Engineering)","Royal IHC|\bIHC\b",FALSE
+121,"ORG","NEW","Heerema","Heerema (ORG:NEW)","Heerema",FALSE
+120,"ORG","Engineering","Seacat Services","Seacat Services (ORG:Engineering)","Seacat Services",FALSE
+116,"ORG","Services","EMO","EMS Maritime Offshore GmbH (ORG:Services)","EMS Maritime Offshore GmbH|EMS Maritime Offshore|\bEMO\b",FALSE
+116,"ORG","Developer","EDP","EDP Renewable (ORG:Developer)","EDP Ren\S+|\bEDPR?\b",FALSE
+115,"ORG","NEW","Ampelmann","Ampelmann (ORG:NEW)","Ampelmann",FALSE
+109,"ORG","Developer","Vineyard Wind","Vineyard Wind LLC (ORG:Developer)","Vineyard Wind( LLC)?",FALSE
+108,"ORG","Blade","LM Wind Power","LM Wind Power (ORG:Blade)","LM Wind Power",FALSE
+108,"ORG","Developer","Shell","Shell Group (ORG:Developer)","Shell",FALSE
+107,"ORG","Consultant","BMT","BMT Group (ORG:Consultant)","BMT Group|\bBMT\b",FALSE
+107,"ORG","NEW","REpower","REpower (ORG:NEW)","REpower",FALSE
+105,"ORG","NEW","SeaPlanner","SeaPlanner (ORG:NEW)","SeaPlanner",FALSE
+103,"ORG","Engineering","OMM","Offshore Marine Management (ORG:Engineering)","Offshore Marine Management|\bOMM\b",FALSE
+102,"ORG","Equipment","Pelamis","Pelamis Wave Power (ORG:Equipment)","Pelamis( Wave Power)?",FALSE
+95,"ORG","Engineering","WINDEA","WINDEA OFFSHORE (ORG:Engineering)","W(INDEA|indea) ((O|o)ffshore)?|\bWINDEA\b",FALSE
+93,"ORG","Foundation","Principle Power","Principle Power (ORG:Foundation)","Principle Power",FALSE
+93,"ORG","Services","ENGIE","ENGIE Fabricom (ORG:Services)","\bENGIE( Fabricom)?|GDF Suez|GDF SUEZ",FALSE
+92,"ORG","Training","AIS","Automatic Identification System (ORG:Training)","Automated Information (S|s)ystem(s)?|\bAIS\b",FALSE
+92,"ORG","Others","Wave Hub","Wave Hub (ORG:Others)","Wave Hub",FALSE
+92,"ORG","Engineering","Acta Marine","Acta Marine (ORG:Engineering)","Acta Marine",FALSE
+90,"ORG","Consultant","Natural Power","Natural Power (ORG:Consultant)","Natural Power",FALSE
+90,"ORG","Engineering","JFMS","James Fisher Marine Services (ORG:Engineering)","James Fisher Marine Services|\bJFMS\b",FALSE
+88,"ORG","Services","DCNS","Green Investment Bank UK (ORG:Services)","Naval Group|\bDCNS\b",FALSE
+88,"ORG","Others","LR","Lloyd's Register (ORG:Others)","Lloyd's Register( \(LR\))?|\bLR\b",FALSE
+87,"ORG","Others","AMSC","American Superconductor (ORG:Others)","American Superconductor|\bAMSC\b",FALSE
+84,"ORG","Foundation","EEW-SPC","EEW Special Pipe Constructions (ORG:Foundation)","EEW( SPC| Special Pipe Constructions)?",FALSE
+84,"ORG","NEW","ESVAGT","ESVAGT (ORG:NEW)","ESVAGT",FALSE
+83,"ORG","Cable","NSW","Norddeutsche Seekabelwerke GmbH (ORG:Cable)","Norddeutsche Seekabelwerke GmbH|\bNSW\b",FALSE
+83,"ORG","Engineering","DBB","DBB Jack-Up Services (ORG:Engineering)","DBB Jack-Up Services|\bDBB\b",FALSE
+81,"ORG","Others","KPS","Kite Power Systems (ORG:Others)","Kite Power Systems|\bKPS\b",FALSE
+79,"ORG","Equipment","Barge Master","Barge Master (ORG:Equipment)","Barge Master",FALSE
+78,"ORG","Others","Aquamarine Power","Aquamarine Power (ORG:Others)","Aquamarine Power",FALSE
+78,"ORG","Engineering","Swire Blue Ocean","Swire Blue Ocean (ORG:Engineering)","Swire Blue Ocean",FALSE
+77,"ORG","Engineering","Tidal Transit","Tidal Transit (ORG:Engineering)","Tidal Transit",FALSE
+75,"ORG","Engineering","SHI","Samsung Heavy Industries (ORG:Engineering)","Samsung Heavy Industries|\bSHI\b",FALSE
+74,"ORG","Monitoring","AXYS","AXYS Technologies Inc. (ORG:Monitoring)","AXYS Technologies Inc\.|\bAXYS\b",FALSE
+74,"ORG","Consultant","MAKE","MAKE Consulting (ORG:Consultant)","\bMAKE( Consulting)?",FALSE
+74,"ORG","Others","Prysmian Group","Prysmian Group (ORG:Others)","Prysmian Group",FALSE
+73,"ORG","Engineering","VSMC","Visser & Smit Marine Contracting (ORG:Engineering)","Visser & Smit Marine Contracting|\bVSMC\b",FALSE
+72,"ORG","Equipment","Lockheed Martin","Lockheed Martin (ORG:Equipment)","Lockheed Martin",FALSE
+72,"ORG","Turbine","Hitachi","Hitachi (ORG:Turbine)","Hitachi",FALSE
+72,"ORG","NEW","Bladt Industries","Bladt Industries (ORG:NEW)","Bladt Industries",FALSE
+69,"ORG","NEW","SeaTwirl","SeaTwirl (ORG:NEW)","SeaTwirl",FALSE
+68,"ORG","Consultant","ABS","ABS Consulting (ORG:Consultant)","\bABS( Consulting)?",FALSE
+68,"ORG","Services","SGS","SGS Renewable Energy (ORG:Services)","\bSGS( Renewable Energy)?",FALSE
+68,"ORG","Others","Siemens Energy","Siemens Energy (ORG:Others)","Siemens Energy Management Division|Siemens Energy Sector|Siemens Energy",FALSE
+68,"ORG","Engineering","MPI Offshore","MPI Offshore (ORG:Engineering)","MPI Offshore",FALSE
+66,"ORG","Engineering","SAL","SAL Heavy Lift (ORG:Engineering)","SAL( Heavy Lift| Offshore)|\bSAL\b",FALSE
+65,"ORG","Services","EDS","EDS HV Group (ORG:Services)","\bEDS( HV( Group)?)?",FALSE
+64,"ORG","Services","ESS","Energy Skills Scotland (ORG:Services)","Energy Skills Scotland|\bESS\b",FALSE
+63,"ORG","Consultant","KIC","KIC InnoEnergy (ORG:Consultant)","\bKIC( InnoEnergy)?",FALSE
+63,"ORG","Turbine","Deutsche Windtechnik","Deutsche Windtechnik Ltd (ORG:Turbine)","Deutsche Windtechnik",FALSE
+63,"ORG","Engineering","SMST","SMST Designers & Constructors BV (ORG:Engineering)","\bSMST\b",FALSE
+63,"ORG","NEW","Dalby Offshore","Dalby Offshore (ORG:NEW)","Dalby Offshore",FALSE
+62,"ORG","Foundation","Universal Foundation","Universal Foundation A/S (ORG:Foundation)","Universal Foundation",FALSE
+62,"ORG","ShipBuil","ULSTEIN","ULSTEIN GROUP (ORG:ShipBuil)","ULSTEIN( GROUP)?",FALSE
+62,"ORG","Equipment","CG","CG Holdings Belgium (ORG:Equipment)","\bCG( [A-Z][a-z]+){0,2}\b",FALSE
+62,"ORG","Engineering","OSBIT","OSBIT Power Limited (ORG:Engineering)","OSBIT( Power)?( Limited)?|\bOP\b",FALSE
+62,"ORG","Engineering","MMT","MMT AB Sweden (ORG:Engineering)","\bMMT\b",FALSE
+61,"ORG","Developer","Mainstream Renewable Power","Mainstream Renewable Power (ORG:Developer)","Mainstream Renewable Power",FALSE
+60,"ORG","Equipment","EOLOS","EOLOS Solutions (ORG:Equipment)","EOLOS",FALSE
+60,"ORG","NEW","Austal","Austal (ORG:NEW)","\bAustal\b",FALSE
+60,"ORG","NEW","Moog","Moog (ORG:NEW)","\bMoog\b",FALSE
+59,"ORG","Equipment","APEM","APEM Co. UK (ORG:Equipment)","\bAPEM\b",FALSE
+59,"ORG","NEW","SeaZip","SeaZip (ORG:NEW)","SeaZip",FALSE
+58,"ORG","Consultant","GICON","GICON Group (ORG:Consultant)","German GICON Group|Floating Offshore Foundation|GICON( (S|F)OF)?",FALSE
+57,"ORG","Consultant","LOC","London Offshore Consultants (ORG:Consultant)","London Offshore Consultants|\bLOC( Renewables| Group)?\b",FALSE
+57,"ORG","Developer","US Wind","US Wind (ORG:Developer)","US Wind",FALSE
+56,"ORG","Equipment","IT Power","IT Power Consulting Ltd. (ORG:Equipment)","IT Power( Consulting)?( Ltd\.)?|\bITP\b",FALSE
+56,"ORG","Equipment","MCT","Marine Current Turbines Ltd. (ORG:Equipment)","Marine Current Turbines( Ltd\.?)?|\bMCT\b",FALSE
+54,"ORG","Others","Mitsubishi Corporation","Mitsubishi Corporation (ORG:Others)","Mitsubishi Corporation",FALSE
+51,"ORG","Engineering","HSM","HSM( Offshore (ORG:Engineering)","\bHSM( Offshore)?",FALSE
+49,"ORG","Equipment","Safety Technology","Safety Technology (ORG:Equipment)","Safety Technology",FALSE
+48,"ORG","Equipment","AMC","Aluminium Marine Consultants (ORG:Equipment)","Aluminium Marine Consultants|\bAMC\b",FALSE
+47,"ORG","PowerCo","IBERDROLA","IBERDROLA Group (ORG:PowerCo)","(Fundaci\S+ )?IBERDROLA (RENOVABLES|Group|INGENI\S+)?",FALSE
+47,"ORG","ShipBuil","IOW","South Boats IOW Ltd (ORG:ShipBuil)","\b(South Boats )?IOW(:| Ltd:)?",FALSE
+46,"ORG","Services","CS","CS Offshore (ORG:Services)","CS (O|o)ffshore|\bCS\b",FALSE
+45,"ORG","Civil","HOCHTIEF","HOCHTIEF Construction (ORG:Civil)","HOCHTIEF( Construction)?",FALSE
+45,"ORG","Engineering","Bibby Marine Services","Bibby Marine Services (ORG:Engineering)","Bibby Marine Services",FALSE
+45,"ORG","Engineering","ALE","ALE Wind Services (ORG:Engineering)","ALE('s)?",FALSE
+43,"ORG","Others","SeaRoc Group","SeaRoc Group (ORG:Others)","SeaRoc Group",FALSE
+42,"ORG","Equipment","SMD","Soil Machine Dynamics (ORG:Equipment)","Soil Machine Dynamics( Ltd)?|\bSMD\b",FALSE
+42,"ORG","Survey","AW-Energy","AW-Energy (ORG:Survey)","\bAW-Energy\b",FALSE
+42,"ORG","PowerCo","Red Rock Power Ltd.","Red Rock Power Ltd. (ORG:PowerCo)","Red Rock Power Ltd.",FALSE
+42,"ORG","Others","GRS","Global Renewables Shipbrokers (ORG:Others)","Global Renewables Shipbroker(s)?|\bGRS\b",FALSE
+41,"ORG","Others","ORPC","Ocean Renewable Power Company (ORG:Others)","Ocean Renewable Power Company|\bORPC\b",FALSE
+41,"ORG","Developer","Nordsee One","Nordsee One (ORG:Developer)","Nordsee One",FALSE
+41,"ORG","Services","SMC","Specialist Marine Consultants (ORG:Services)","Specialist Marine Consultants|(Scaldis)? SMC('s)?",FALSE
+41,"ORG","PowerCo","ESB","Electricity Supply Board (ORG:PowerCo)","Electricity Supply Board|\bESB\b",FALSE
+40,"ORG","Others","BLG","BLG WindEnergy Logistics (ORG:Others)","BLG WindEnergy( Logistics)?|\bBLG\b",FALSE
+39,"ORG","Services","3sun Group","3sun Group (ORG:Services)","3sun Group",FALSE
+39,"ORG","NEW","SeaEnergy","Sea Energy Company (ORG:NEW)","\bSeaEnergy\b",FALSE
+38,"ORG","Blade","GEV","GEV Wind Power (ORG:Blade)","GEV Wind Power('s)?|\bGEV\b",FALSE
+38,"ORG","Services","LDA","Louis Dreyfus Armateurs (ORG:Services)","Louis Dreyfus ARMATEURS( Group)?( \(LDA\))?|\bLDA\b",TRUE
+36,"ORG","Others","NRG","Renewable NRG Systems (ORG:Others)","Renewable NRG( Systems)|\bNRG\b",FALSE
+34,"ORG","Others","Siemens AG","Siemens AG (ORG:Others)","Siemens (AG|Industry)",FALSE
+34,"ORG","Engineering","Iceni Marine Services","Iceni Marine Services (ORG:Engineering)","Iceni Marine Services",FALSE
+33,"ORG","Consultant","BVG Associates","BVG Associates (ORG:Consultant)","BVG Associates",FALSE
+33,"ORG","Services","KCI","KCI (ORG:Services)","KCI",FALSE
+33,"ORG","Equipment","XEMC","Xiangtan Electric Manufacturing Corporation (ORG:Equipment)","Xiangdian Wind Energy( \(XEMC\))?|Xiangtan Electric Manufacturing Corporation( Ltd)? |\bXEMC\b",FALSE
+33,"ORG","NEW","OutSmart","OutSmart (ORG:NEW)","\bOutSmart\b",FALSE
+32,"ORG","Equipment","Hydro Group","Hydro Group (ORG:Equipment)","Hydro Group",FALSE
+32,"ORG","Training","Deutsche WindGuard","Deutsche WindGuard (ORG:Training)","Deutsche WindGuard",FALSE
+32,"ORG","NEW","Tideland","Tideland Singal (ORG:NEW)","Tideland Signal|Tideland",FALSE
+32,"ORG","NEW","Oceanteam","Oceanteam (ORG:NEW)","Oceanteam",FALSE
+31,"ORG","NEW","Red7Marine","Red7Marine (ORG:NEW)","Red7Marine",FALSE
+30,"ORG","Civil","MT Hojgaard","MT Hojgaard (ORG:Civil)","MT Hojgaard|MT Hojgaard|\bMT\b",FALSE
+28,"ORG","PowerCo","Northland Power Inc.","Northland Power Inc. (ORG:PowerCo)","Northland Power Inc.",FALSE
+28,"ORG","Survey","Fugro EMU","Fugro EMU (ORG:Survey)","Fugro EMU|\bEMU\b",FALSE
+28,"ORG","NEW","OOS","OOS International (ORG:NEW)","OOS International|\bOOS\b",FALSE
+27,"ORG","NEW","SKF","SKF (ORG:NEW)","\bSKF\b",FALSE
+26,"ORG","Others","Blue Water Shipping","Blue Water Shipping (ORG:Others)","Blue Water Shipping",FALSE
+26,"ORG","Services","TAG Energy Solutions","TAG Energy Solutions (ORG:Services)","TAG Energy Solutions",FALSE
+26,"ORG","NEW","Anbaric","Anbaric (ORG:NEW)","Anbaric",FALSE
+25,"ORG","Engineering","MMS","MMS Offshore Renewable Services Ltd (ORG:Engineering)","MMS Offshore|\bMMS\b",FALSE
+25,"ORG","NEW","GCube","GCube (ORG:NEW)","\bGCube\b",FALSE
+24,"ORG","Engineering","Reef","Reef Subsea Power & Umbilical (ORG:Engineering)","Reef Subsea Power & Umbilical",FALSE
+24,"ORG","Engineering","Mitsubishi","Mitsubishi Heavy Industries (ORG:Engineering)","Mitsubishi Heavy Industries",FALSE
+24,"ORG","Civil","BAM","BAM Nuttall (ORG:Civil)","BAM Nuttall|\bBAM\b",FALSE
+24,"ORG","NEW","CPNL","CPNL (ORG:NEW)","\bCPNL\b",FALSE
+23,"ORG","NEW","Aqualis","AqualisBraemar (ORG:NEW)","AqualisBraemar|Aqualis",FALSE
+22,"ORG","Blade","Blade Dynamics","Blade Dynamics (ORG:Blade)","Blade Dynamics",FALSE
+22,"ORG","Developer","Nordsee One GmbH","Nordsee One GmbH (ORG:Developer)","Nordsee One GmbH",FALSE
+22,"ORG","NEW","FoundOcean","FoundOcean (ORG:NEW)","FoundOcean",FALSE
+22,"ORG","NEW","NorSea","NorSea (ORG:NEW)","NorSea",FALSE
+21,"ORG","Others","DTU Wind Energy","DTU Wind Energy (ORG:Others)","DTU Wind Energy",FALSE
+21,"ORG","NEW","Aubin","Aubin Group (ORG:NEW)","\bAubin\b",FALSE
+21,"ORG","NEW","BASF","BASF (ORG:NEW)","\bBASF\b",FALSE
+20,"ORG","Consultant","NOF Energy","NOF Energy (ORG:Consultant)","NOF Energy",FALSE
+20,"ORG","NEW","APQP4Wind","APQP4Wind (ORG:NEW)","APQP4Wind",FALSE
+20,"ORG","NEW","AMBAU","AMBAU (ORG:NEW)","\bAMBAU\b",FALSE
+20,"ORG","NEW","WSP","WSP (ORG:NEW)","\bWSP\b",FALSE
+20,"ORG","NEW","Polenergia","Polenergia (ORG:NEW)","Polenergia",FALSE
+19,"ORG","NEW","Senergy","Senergy (ORG:NEW)","Senergy",FALSE
+17,"ORG","Engineering","A&P Group","A&P Group (ORG:Engineering)","A&P Group",FALSE
+15,"ORG","NEW","Turner Iceni","Turner Iceni (ORG:NEW)","Turner Iceni",FALSE
+14,"ORG","NEW","Northern Offshore Services","Northern Offshore Services (ORG:NEW)","Northern Offshore Services",FALSE
+13,"ORG","NEW","AEG","Aeolus Energy Group (ORG:NEW)","Aeolus Energy Group|\bAEG\b",FALSE
+11,"ORG","Engineering","Falcon Global","Falcon Global (ORG:Engineering)","Falcon Global( LLC)?",FALSE
+11,"ORG","NEW","GE Wind","GE Wind (ORG:NEW)","GE Wind|Alstom Wind",FALSE
+6,"ORG","NEW","Zephir","Zephir (ORG:NEW)","Zephir",FALSE
+3696,"TERM",NA,"OWF","Offshore Wind Farms (TERM)","((O|o)ffshore )?(W|w)ind (F|f)arms|\bOWF\b",FALSE
+3076,"TERM",NA,"Research","Research (TERM)","(R|r)esearch",FALSE
+1373,"TERM",NA,"CEO","Chief Executive Officer (TERM)","(C|c)hief (E|e)xecutive (O|o)fficer|\bCEO\b",FALSE
+961,"TERM",NA,"Oil & Gas","Oil & Gas (TERM)","Oil (&|and) Gas",TRUE
+916,"TERM",NA,"supply chain","supply chain (TERM)","supply chain",TRUE
+768,"TERM",NA,"HVDC","High Voltage DC (TERM)","\bHVDC\b",FALSE
+723,"TERM",NA,"LiDAR","Light Detection and Ranging Tech. (TERM)","Light Detection and Ranging|(floating |F|B|Sea|DeepC)?LiDAR( technology)?",TRUE
+709,"TERM",NA,"OSS","Offshore Substation (TERM)","Offshore Substation?|\bOSS\b",TRUE
+700,"TERM",NA,"export cable","export cable (TERM)","export cables?",TRUE
+698,"TERM",NA,"Wave Energy","Wave Energy (TERM)","Wave Energy",TRUE
+638,"TERM",NA,"marine energy","marine energy (TERM)","marine energy",TRUE
+578,"TERM",NA,"tidal energy","tidal energy (TERM)","tidal energy",TRUE
+525,"TERM",NA,"joint venture","joint venture (TERM)","(J|j)oint (V|v)enture( \(JV\))?|\bJV\b",FALSE
+512,"TERM",NA,"cost reduction","cost reduction (TERM)","cost (reduction|savings?)",TRUE
+472,"TERM",NA,"clean energy","clean energy (TERM)","clean energy",TRUE
+472,"TERM",NA,"jacket foundation","jacket foundations (TERM)","jacket foundations?",TRUE
+453,"TERM",NA,"energy technologies","energy technologies (TERM)","energy technolog(y|ies)",TRUE
+452,"TERM",NA,"SWT","SWT turbine Siemens (TERM)","SWT[ 0-9\-\.]+(turbine)?",FALSE
+450,"TERM",NA,"power plants","power plants (TERM)","power plants?",TRUE
+448,"TERM",NA,"energy production","energy production (TERM)","energy (generation|production)",TRUE
+404,"TERM",NA,"submarine cable","submarine cable (TERM)","submarine cables?",TRUE
+399,"TERM",NA,"TPs","transition pieces (TERM)","(T|t)ransition (P|p)ieces|\bTPs\b",FALSE
+390,"TERM",NA,"subsea cable","subsea cable (TERM)","subsea cables?",TRUE
+373,"TERM",NA,"ocean energy","ocean energy (TERM)","ocean energy",TRUE
+363,"TERM",NA,"climate change","climate change (TERM)","climate change",TRUE
+342,"TERM",NA,"energy sources","energy sources (TERM)","energy sources?",TRUE
+341,"TERM",NA,"monopile foundation","monopile foundations (TERM)","monopile foundations?",TRUE
+331,"TERM",NA,"renewables industry","renewables industry (TERM)","renewables (industry|sector)",TRUE
+324,"TERM",NA,"cable route","cable route (TERM)","cable route",TRUE
+312,"TERM",NA,"energy market","energy market (TERM)","energy market",TRUE
+295,"TERM",NA,"cable systems","cable systems (TERM)","cable systems?",TRUE
+287,"TERM",NA,"LCOE","Levelized Cost of Energy (TERM)","Leveli(s|z)ed( |-)Cost( |-)of( |-)(Energy|Electricity)|\bLCOE\b",TRUE
+286,"TERM",NA,"power systems","power systems (TERM)","power systems?",TRUE
+284,"TERM",NA,"rotor blade","rotor blade (TERM)","rotor blades?",TRUE
+281,"TERM",NA,"converter stations","converter stations (TERM)","converter stations?",TRUE
+280,"TERM",NA,"onshore wind","onshore wind (TERM)","onshore wind",TRUE
+272,"TERM",NA,"weather conditions","weather conditions (TERM)","weather conditions",TRUE
+271,"TERM",NA,"turbine manufacturer","turbine manufacturers (TERM)","turbine manufacturers?",TRUE
+270,"TERM",NA,"AC","Alternate Current (TERM)","\bAC\b",FALSE
+270,"TERM",NA,"test sites","test sites (TERM)","test sites?",TRUE
+261,"TERM",NA,"low carbon","low carbon (TERM)","low carbon",TRUE
+259,"TERM",NA,"energy companies","energy companies (TERM)","energy compan(y|ies)",TRUE
+255,"TERM",NA,"DolWin","DolWin (TERM)","DolWin",FALSE
+225,"TERM",NA,"tidal turbine","tidal turbine (TERM)","tidal turbines?",TRUE
+220,"TERM",NA,"DP","Dynamic Positioning (TERM)","\bDP\b|Dynamic Positioning",FALSE
+220,"TERM",NA,"MOU","Memorandum of Understanding (TERM)","(M|m)emorandum of (U|u)nderstanding|\bM(O|o)U\b",FALSE
+219,"TERM",NA,"turbine blade","turbine blade (TERM)","turbine blades?",TRUE
+217,"TERM",NA,"offshore platform","offshore platform (TERM)","offshore platform",TRUE
+216,"TERM",NA,"suction bucket","suction bucket (TERM)","suction bucket",TRUE
+215,"TERM",NA,"elec. production","electricity production) (TERM)","electricity (generation|production)",TRUE
+214,"TERM",NA,"turbine foundation","turbine foundations (TERM)","turbine foundations?",TRUE
+212,"TERM",NA,"OWA","Offshore Wind Accelerator Service (TERM)","(O|o)ffshore (W|w)ind (A|a)ccelerator( program)?|\bOWA\b",TRUE
+203,"TERM",NA,"UXO","Unexploded ordnance (TERM)","Unexploded Ordnance|\bUXO\b",TRUE
+203,"TERM",NA,"FID","Final Investment Decision (TERM)","Final Investment Decision|\bFID\b",TRUE
+202,"TERM",NA,"Wave Power","Wave Power (TERM)","Wave Power",TRUE
+199,"TERM",NA,"power cables","power cables (TERM)","power cables",TRUE
+198,"TERM",NA,"EPC(I)","Engineering Procurement Construction & Installation (TERM)","engineering, procurement(,| and| &) construction((,| and| &) installation)?|\bEPCI?\b",TRUE
+198,"TERM",NA,"WEC","Wave Energy Converter (TERM)","Wave Energy Conver(ter|sion)|\bWEC\b",TRUE
+198,"TERM",NA,"Motion Compensation","Motion Compensation (Platform) (TERM)","(M|m)otion( |-)(C|c)ompensat(ion|ed)( platforms?)?",FALSE
+197,"TERM",NA,"OFTO","Offshore Transmission Owner (TERM)","(O|o)ffshore (T|t)ransmission (|O|o)wners?|\bOFTOs?",FALSE
+191,"TERM",NA,"inter-array cables","inter-array cables (TERM)","inter-array cables",TRUE
+188,"TERM",NA,"offshore services","offshore services (TERM)","offshore services?",TRUE
+182,"TERM",NA,"test facility","test facility (TERM)","test facilit(y|ies)",TRUE
+181,"TERM",NA,"floating wind turbine","floating wind turbine (TERM)","floating wind turbine",TRUE
+177,"TERM",NA,"HVAC","High Voltage AC (TERM)","\bHVAC\b",FALSE
+176,"TERM",NA,"wave heights","wave heights (TERM)","wave heights?",TRUE
+171,"TERM",NA,"CfD","Contract for Difference (TERM)","Contracts? for Difference|CfD",FALSE
+166,"TERM",NA,"financial close","financial close (TERM)","financial close",TRUE
+163,"TERM",NA,"WTG","Wind Turbine Generator (TERM)","(W|w)ind (T|t)urbine (G|g)enerators?|\bWTG\b",FALSE
+161,"TERM",NA,"CO2 emissions","CO2 emissions (TERM)","(CO2|carbon) emissions",TRUE
+161,"TERM",NA,"best practice","best practice (TERM)","best practices?",TRUE
+161,"TERM",NA,"green energy","green energy (TERM)","green energy",TRUE
+161,"TERM",NA,"research project","research project (TERM)","research project",TRUE
+157,"TERM",NA,"power station","power station (TERM)","power stations?",TRUE
+156,"TERM",NA,"CETO","Cylindrical Energy Transfer Oscillating (TERM)","(C|c)ylindrical (E|e)nergy (T|t)ransfer (O|o)scillating|\bCETO\b",FALSE
+153,"TERM",NA,"electricity grid","electricity grid (TERM)","electricity grid",TRUE
+148,"TERM",NA,"energy converter","energy converter (TERM)","energy converter",TRUE
+148,"TERM",NA,"energy transition","energy transition (TERM)","energy transitions?",TRUE
+146,"TERM",NA,"CPS","Cable Protection System (TERM)","(C|c)able (P|p)rotection (S|s)ystems?|\bCPS\b",FALSE
+146,"TERM",NA,"energy supply","energy supply (TERM)","energy supply",TRUE
+144,"TERM",NA,"grid connections","grid connections (TERM)","grid connections",TRUE
+144,"TERM",NA,"rotor diameter","rotor diameter (TERM)","rotor diameter",TRUE
+143,"TERM",NA,"floating foundation","floating foundations (TERM)","floating foundations?",TRUE
+143,"TERM",NA,"cable protection","cable protection (TERM)","cable protection",TRUE
+143,"TERM",NA,"energy efficiency","energy efficiency (TERM)","energy efficiency",TRUE
+140,"TERM",NA,"TSO","Transmission Systems Operator (TERM)","(T|t)ransmission (S|s)ystems (O|o)perators?|\bTSO\b",FALSE
+137,"TERM",NA,"renewable sources","renewable sources (TERM)","renewable sources",TRUE
+137,"TERM",NA,"shallow water","shallow water (TERM)","shallow water",TRUE
+135,"TERM",NA,"OCS","Outer Continental Shelf (TERM)","(Outer )?Continental Shelf|\bOCS\b",TRUE
+133,"TERM",NA,"project developers","project developers (TERM)","project developers?",TRUE
+131,"TERM",NA,"fossil fuels","fossil fuels (TERM)","fossil fuels",TRUE
+130,"TERM",NA,"commercial operation","commercial operation (TERM)","commercial operation",TRUE
+129,"TERM",NA,"sister vessels","sister vessel (TERM)","sister vessels?",TRUE
+126,"TERM",NA,"management system","management system (TERM)","management systems?",TRUE
+124,"TERM",NA,"onshore grid","onshore grid (TERM)","onshore grid",TRUE
+124,"TERM",NA,"safety training","safety training (TERM)","safety training",TRUE
+124,"TERM",NA,"wind energy sector","wind energy sector (TERM)","wind energy sector",TRUE
+122,"TERM",NA,"SMEs","small and medium-sized enterprises (TERM)","small and medium(-sized)? enterprises?|\bSMEs?\b",TRUE
+120,"TERM",NA,"lifting capacity","lifting capacity (TERM)","lifting capacity",TRUE
+118,"TERM",NA,"project development","project development (TERM)","project development",TRUE
+117,"TERM",NA,"renewable electricity","renewable electricity (TERM)","renewable electricity",TRUE
+115,"TERM",NA,"OTM","Offshore Transformer Module (TERM)","(O|o)ffshore (T|t)ransformer (M|m)odules?|\bOTMs?\b",FALSE
+111,"TERM",NA,"maintenance costs","maintenance costs (TERM)","maintenance costs?",TRUE
+110,"TERM",NA,"energy policy","energy policy (TERM)","energy policy",TRUE
+109,"TERM",NA,"scour protection","scour protection (TERM)","scour protection",TRUE
+108,"TERM",NA,"deck space","deck space (TERM)","(D|d)eck space",FALSE
+107,"TERM",NA,"compensated gangway","compensated gangway (TERM)","compensated gangway",TRUE
+106,"TERM",NA,"electricity market","electricity market (TERM)","electricity market",TRUE
+106,"TERM",NA,"energy solutions","energy solutions (TERM)","energy solutions?",TRUE
+105,"TERM",NA,"nuclear power","nuclear power (TERM)","nuclear power",TRUE
+105,"TERM",NA,"power industry","power industry (TERM)","power industry",TRUE
+105,"TERM",NA,"tidal stream","tidal stream (TERM)","tidal stream",TRUE
+103,"TERM",NA,"framework agreement","framework agreement (TERM)","framework agreement",TRUE
+101,"TERM",NA,"Dev. Manager","Business Development Manager (TERM)","Business Development Manager",TRUE
+101,"TERM",NA,"power capacity","power capacity (TERM)","power capacity",TRUE
+100,"TERM",NA,"control systems","control systems (TERM)","control systems",TRUE
+99,"TERM",NA,"JIP","Joint Industry Project (TERM)","\bJIP\b|(J|j)oint (I|i)ndustry (P|p)roject",FALSE
+99,"TERM",NA,"transmission assets","transmission assets (TERM)","transmission assets?",TRUE
+96,"TERM",NA,"electricity transmission","electricity transmission (TERM)","electricity transmission",TRUE
+95,"TERM",NA,"marine mammals","marine mammals (TERM)","marine mammals",TRUE
+95,"TERM",NA,"permanent magnet","permanent magnet (TERM)","permanent magnet",TRUE
+92,"TERM",NA,"offshore sector","offshore sector (TERM)","offshore sector",TRUE
+90,"TERM",NA,"COO","Chief Operating Officer (TERM)","(C|c)hief (O|o)perating (O|o)fficer|\bCOO\b",FALSE
+88,"TERM",NA,"PPA","Power Purchase Agreement (TERM)","Power Purchase Agreement|\bPPA(s)?\b",TRUE
+86,"TERM",NA,"tidal lagoon","tidal lagoon (TERM)","tidal lagoon",TRUE
+85,"TERM",NA,"natural gas","natural gas (TERM)","natural gas",TRUE
+85,"TERM",NA,"spare parts","spare parts (TERM)","spare parts",TRUE
+84,"TERM",NA,"carbon energy","carbon energy (TERM)","carbon energy",TRUE
+84,"TERM",NA,"heavy industries","heavy industries (TERM)","heavy industries",TRUE
+84,"TERM",NA,"marine coordination","marine coordination (TERM)","marine coordination",TRUE
+84,"TERM",NA,"marine engineering","marine engineering (TERM)","marine engineering",TRUE
+84,"TERM",NA,"nautical miles","nautical miles (TERM)","nautical miles",TRUE
+84,"TERM",NA,"power production","power production (TERM)","power production",TRUE
+84,"TERM",NA,"solar power","solar power (TERM)","solar power",TRUE
+83,"TERM",NA,"PPE","published Energy Plan (TERM)","((p|P)ublished)? (e|E)nergy (p|P)lan( \(PPE\))?|\bPPE\b",FALSE
+82,"TERM",NA,"turbine technology","turbine technology (TERM)","turbine technology",TRUE
+81,"TERM",NA,"RCS","Reactive Compensation (Sub)station (TERM)","Reactive Compensation (Sub)?station|\bRCS\b",TRUE
+81,"TERM",NA,"continental shelf","continental shelf (TERM)","continental shelf",TRUE
+80,"TERM",NA,"PV","solar photovoltaic (TERM)","(S|s)olar (P|p)hotovoltaic|\bPV\b",FALSE
+78,"TERM",NA,"swire blue","swire blue (TERM)","swire blue",TRUE
+78,"TERM",NA,"tidal transit","tidal transit (TERM)","tidal transit",TRUE
+77,"TERM",NA,"bucket foundations","bucket foundations (TERM)","bucket foundations?",TRUE
+76,"TERM",NA,"OHVS","Offshore High Voltage Substation (TERM)","Offshore High Voltage Substation|\bOHVS\b",TRUE
+76,"TERM",NA,"RFP","Request for Proposal (TERM)","Request for Proposal|\b(R(F|f)P)\b",TRUE
+73,"TERM",NA,"MHK","Marine Hydrokinetic (TERM)","\bMHK\b|(M|m)arine( and)? (H|h)ydrokinetic",FALSE
+71,"TERM",NA,"commercial scale","commercial scale (TERM)","commercial scale",TRUE
+69,"TERM",NA,"OTEC","Ocean Thermal Energy Conversion (TERM)","\bOTEC\b|(O|o)cean (T|t)hermal (E|e)nergy (C|c)onversion",FALSE
+69,"TERM",NA,"VSC","Voltage Source Converter (TERM)","(V|v)oltage (S|s)ource (C|c)onverter|\bVSC\b",FALSE
+65,"TERM",NA,"FY","fiscal year (TERM)","fiscal year|\bFY\b",FALSE
+64,"TERM",NA,"MOG","Modular Offshore Grid (TERM)","Modular Offshore Grid|\bMOG\b",TRUE
+63,"TERM",NA,"CGS","Combined Grid Solution (TERM)","Combined Grid Solution|\bCGS\b",TRUE
+62,"TERM",NA,"Power Conversion","Power Conversion (TERM)","Power Conversion",TRUE
+58,"TERM",NA,"GIS","Geographic Information System (TERM)","Geographic Information System|\bGIS\b",FALSE
+53,"TERM",NA,"VAWT","Vertical Axis Wind Turbine (TERM)","Vertical Axis Wind Turbine|\bVAWT\b",TRUE
+52,"TERM",NA,"Cable Enterprise","Cable Enterprise (TERM)","Cable Enterprise",TRUE
+51,"TERM",NA,"CPT","Cone Penetration Tests (TERM)","(C|c)one (P|p)enetration (T|t)est(s)?( \(CPT\))?|CPT( \((C|c)one (P|p)enetration (T|t)est(s)?\))?|\bCPT\b",FALSE
+50,"TERM",NA,"GE Haliade","GE Haliade wind turbine (TERM)","GE Haliade",FALSE
+50,"TERM",NA,"greenhouse gas emissions","greenhouse gas emissions (TERM)","greenhouse gas emissions?",TRUE
+49,"TERM",NA,"TLP","Tension Leg Platform (TERM)","Tension( |-)Leg( |-)Platform|\bTLP\b",TRUE
+47,"TERM",NA,"CAGR","Compound Annual Growth Rate (TERM)","Compound Annual Growth Rate|\bCAGR\b",FALSE
+44,"TERM",NA,"FPP","Floating Power Plant (TERM)","(F|f)loating (P|p)ower (P|p)lant|\bFPP\b",FALSE
+43,"TERM",NA,"SES","Surface Effect Ship Tech. (TERM)","surface(-| )effect(-| )ship|\bSES\b",TRUE
+43,"TERM",NA,"LNG","liquefied natural gas (TERM)","(L|l)iquefied (N|n)atural (G|g)as|\bLNG\b",FALSE
+43,"TERM",NA,"ASV","Autonomous Surface Vehicle (TERM)","Autonomous Surface Vehicle(s)?|\bASV\b",FALSE
+42,"TERM",NA,"Borssele Beta","Borssele Beta transformer platform (TERM)","Borssele Beta",FALSE
+40,"TERM",NA,"XLPE","cross-linked polyethylene (TERM)","cross-linked polyethylene( insulated)?|\bXLPE\b",FALSE
+39,"TERM",NA,"HDD","Horizontal Directional Drilling (TERM)","Horizontal Directional Drilling|\bHDD\b",TRUE
+38,"TERM",NA,"OPEX","operating expense (TERM)","(o|O)perating (e|E)xpense|\bOPEX\b",TRUE
+35,"TERM",NA,"Marine Current Turbines","Marine Current Turbine (TERM)","Marine Current Turbine",TRUE
+35,"TERM",NA,"MSP","Maritime Spatial Planning (TERM)","(M|m)aritime (S|s)patial (P|p)lanning( \(MSP\))?|\bMSP\b",FALSE
+34,"TERM",NA,"FOWIND","Facilitating Offshore Wind in India (TERM)","(F|f)acilitating (O|o)ffshore (W|w)ind (I|i)n (I|i)ndia( \(FOWIND\))?|FOWIND \((F|f)acilitating (O|o)ffshore (W|w)ind (I|i)n (I|i)ndia\)|\bFOWIND\b",FALSE
+33,"TERM",NA,"SDE+","Stimulation of Sustainable Energy Production (TERM)","(The SDE\+? )?\(?Stimulering Duurzame Energieproductie/Stimulation of sustainable energy production\)|Renewable Energy Production Incentive( \(SDE\))?|\bSDE( )?\+?\b",FALSE
+31,"TERM",NA,"AEP","annual energy production (TERM)","(A|a)nnual (E|e)nergy (P|p)roduction|\bAEP\b",FALSE
+31,"TERM",NA,"CCS","Carbon Capture & Storage (TERM)","carbon capture (and|&) storage|\bCCS\b",TRUE
+25,"TERM",NA,"MRCF","Marine Renewables Commercialisation Fund (TERM)","Marine Renewables Commercialisation Fund|\bMRCF\b",FALSE
+118,"UNIV",NA,"DTU","Tech. Univ. Denmark (UNIV)","Technical University of Denmark|\bDTU\b",FALSE
+56,"UNIV",NA,"Maine","Univ. Maine (UNIV)","University of Maine",FALSE
+47,"UNIV",NA,"Strathclyde","Univ. Strathclyde (UNIV)","University of Strathclyde|Strathclyde University",FALSE
+37,"UNIV",NA,"Exeter","Univ. Exeter (UNIV)","University of Exeter|Exeter University",FALSE
+36,"UNIV",NA,"Edinburgh","Univ. Edinburgh (UNIV)","University of Edinburgh|Edinburgh University",FALSE
+31,"UNIV",NA,"Hull","Univ. Hull (UNIV)","University of Hull",FALSE
+23,"UNIV",NA,"Clemson","Univ. Clemson (UNIV)","Clemson University",FALSE
+20,"UNIV",NA,"Massachusetts","Univ. Massachusetts (UNIV)","University of Massachusetts",FALSE
+20,"UNIV",NA,"Stuttgart","Univ. Stuttgart (UNIV)","University of Stuttgart",FALSE
+19,"UNIV",NA,"Delaware","Univ. Delaware (UNIV)","University of Delaware",FALSE
+19,"UNIV",NA,"Lowestoft","Lowestoft College (UNIV)","Lowestoft College",FALSE
+18,"UNIV",NA,"Plymouth","Univ. Plymouth (UNIV)","University of Plymouth|Plymouth University",FALSE
+17,"UNIV",NA,"Technology","Univ. Technology (UNIV)","University of Technology",FALSE
+17,"UNIV",NA,"TU.Denmark","Univ. TU.Denmark (UNIV)","Technical University( of| in)? Denmark",FALSE
+15,"UNIV",NA,"Cranfield","Univ. Cranfield (UNIV)","Cranfield University",FALSE
+15,"UNIV",NA,"Newcastle","Newcastle College (UNIV)","Newcastle College",FALSE
+14,"UNIV",NA,"Aberdeen","Univ. Aberdeen (UNIV)","University of Aberdeen",FALSE
+14,"UNIV",NA,"Watt","Univ. Watt (UNIV)","Watt University",FALSE
+13,"UNIV",NA,"Robert Gordon","Univ. Robert Gordon (UNIV)","Robert Gordon University",FALSE
+13,"UNIV",NA,"Rostock","Univ. Rostock (UNIV)","University of Rostock",FALSE
+13,"UNIV",NA,"Great Yarmouth","Great Yarmouth College (UNIV)","Great Yarmouth College",FALSE
+12,"UNIV",NA,"Durham","Univ. Durham (UNIV)","Durham University",FALSE
+12,"UNIV",NA,"Oxford","Univ. Oxford (UNIV)","University of Oxford|Oxford University",FALSE
+12,"UNIV",NA,"Southampton","Univ. Southampton (UNIV)","University of Southampton|Southampton University",FALSE
+12,"UNIV",NA,"Tokyo","Univ. Tokyo (UNIV)","University of Tokyo",FALSE
+12,"UNIV",NA,"Hull C.","Hull College (UNIV)","Hull College",FALSE
+12,"UNIV",NA,"Bristol Community","Bristol Community College (UNIV)","Bristol Community College",FALSE
+11,"UNIV",NA,"Washington","Univ. Washington (UNIV)","University of Washington",FALSE
+11,"UNIV",NA,"Delft","Univ. Delft (UNIV)","Delft University",FALSE
+11,"UNIV",NA,"Oregon State","Univ. Oregon State (UNIV)","Oregon State University",FALSE
+10,"UNIV",NA,"Aalborg","Univ. Aalborg (UNIV)","Aalborg University",FALSE
+10,"UNIV",NA,"Maryland","Univ. Maryland (UNIV)","University of Maryland",FALSE
+10,"UNIV",NA,"Cardiff","Univ. Cardiff (UNIV)","Cardiff University",FALSE
+10,"UNIV",NA,"Swansea","Univ. Swansea (UNIV)","Swansea University",FALSE
+8,"UNIV",NA,"Bristol","Univ. Bristol (UNIV)","University of Bristol",FALSE
+515,"VESSEL",NA,"CTV","Crew Transfer Vessel (VESSEL)","crew( |-)transfer vessels?|\bCTV\b",TRUE
+411,"VESSEL",NA,"SOV","Service Operation Vessel (VESSEL)","service operations? vessels?|\bSOV\b",TRUE
+369,"VESSEL",NA,"Jack Up Vessel","Jack Up Vessel (VESSEL)","jack( |-)up( installation)? vessels?",TRUE
+281,"VESSEL",NA,"Cable Laying Vessel","Cable Laying Vessel (VESSEL)","cable( |-)?(installation|lay(ing)?) vessels?|\bCLV\b",TRUE
+180,"VESSEL",NA,"Heavy Lift Vessel","Heavy Lift Vessel (VESSEL)","heavy( |-)lift vessels?|\bHLV\b",TRUE
+147,"VESSEL",NA,"SEA","Strategic Environmental Assessment (VESSEL)","\bSEA(( |-)([A-Z]+))?\b",FALSE
+136,"VESSEL",NA,"Service Vessel","Service Vessel (VESSEL)","(wind farm |offshore )?service vessels?",TRUE
+124,"VESSEL",NA,"FCS","Fast Crew Supplier (VESSEL)","(F|f)ast (C|c)rew (S|s)uppliers?|\bFCS\b",FALSE
+116,"VESSEL",NA,"VOS","Vroon Offshore Services (VESSEL)","\bVOS\b",FALSE
+103,"VESSEL",NA,"Support Vessel","Support Vessel (VESSEL)","(wind farm|offshore) support vessels?",TRUE
+102,"VESSEL",NA,"WTIV","wind turbine installation vessel (VESSEL)","wind turbine installation vessel( \(WTIV\))?|\bWTIV\b",FALSE
+100,"VESSEL",NA,"Seajacks Scylla","Seajacks Scylla (VESSEL)","Seajacks Scylla",FALSE
+98,"VESSEL",NA,"Stanislav Yudin","Stanislav Yudin (VESSEL)","Stanislav Yudin",FALSE
+94,"VESSEL",NA,"Turbine Installation Vessel","Turbine Installation Vessel (VESSEL)","(wind )?turbine installation vessels?",TRUE
+91,"VESSEL",NA,"SWATH","Small Waterplane Area Twin Hull (VESSEL)","\bSWATH\b",FALSE
+91,"VESSEL",NA,"Construction Vessel","Construction Vessel (VESSEL)","(offshore )?construction( support)? vessels?",TRUE
+84,"VESSEL",NA,"Wind Farm Vessel","Wind Farm Vessel (VESSEL)","(wind farm|offshore) vessels?",TRUE
+82,"VESSEL",NA,"Installation Vessel","Installation Vessel (VESSEL)","(wind( farm)? |offshore )installation vessels?",TRUE
+78,"VESSEL",NA,"Brave Tern","Brave Tern (VESSEL)","Brave Tern",FALSE
+78,"VESSEL",NA,"Bold Tern","Bold Tern (VESSEL)","Bold Tern",FALSE
+74,"VESSEL",NA,"Vole au Vent","Vole au Vent (VESSEL)","\bVole au Vent\b",TRUE
+62,"VESSEL",NA,"MPI Discovery","MPI Discovery (VESSEL)","MPI Discovery",FALSE
+58,"VESSEL",NA,"MRE","Marine Renewable Energy (VESSEL)","\bMRE\b",FALSE
+56,"VESSEL",NA,"Bibby WaveMaster","Bibby WaveMaster (VESSEL)","Bibby WaveMaster (1|2)",FALSE
+52,"VESSEL",NA,"Accommodation Vessel","Accommodation Vessel (VESSEL)","accommodation vessels?",TRUE
+51,"VESSEL",NA,"X-STERN","operate with stern (VESSEL)","X-(STERN|BOW)",FALSE
+51,"VESSEL",NA,"Living Stone","Living Stone (VESSEL)","Living Stone",FALSE
+48,"VESSEL",NA,"SEA CHALLENGER","SEA CHALLENGER (VESSEL)","SEA CHALLENGER",FALSE
+48,"VESSEL",NA,"CSV","Construction Support Vessel (VESSEL)","(C|c)onstruction (S|s)upport (V|v)essel( \(CSV\))?|\bCSV\b",FALSE
+45,"VESSEL",NA,"Siem Aimery","Siem Aimery (VESSEL)","Siem Aimery",FALSE
+43,"VESSEL",NA,"Maersk Connector","Maersk Connector (VESSEL)","Maersk Connector",FALSE
+37,"VESSEL",NA,"HST","High Speed Transfers (VESSEL)","\bHST [HS][a-z]+",FALSE
+29,"VESSEL",NA,"GMS","Gulf / Green Marine Services (VESSEL)","GMS( Endeavour| Evolution| vessels?)",FALSE
+22,"VESSEL",NA,"Platform Supply Vessel","Platform Supply Vessel (VESSEL)","platform supply vessels?",TRUE
+21,"VESSEL",NA,"Maintenance Vessel","Maintenance Vessel (VESSEL)","maintenance vessels?",TRUE
+15,"VESSEL",NA,"Chartwell","Chartwell (VESSEL)","Chartwell",FALSE

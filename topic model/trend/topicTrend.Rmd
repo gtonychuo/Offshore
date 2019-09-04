@@ -1,0 +1,93 @@
+---
+title: "主題模型聲量分析"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: default
+    css: JH.css
+    social: menu
+    source_code: embed 
+    logo: nsysu48.png
+    favicon: nsysu48.png
+runtime: shiny
+---
+
+```{r}
+pacman::p_load(shinyWidgets,shinythemes,dplyr,googleVis,reshape2)
+load("./C6.rdata")
+X$year = format(X$date,"%Y") %>% factor
+load("./0723_nn_24.rdata")
+
+topic_names = c("Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M","Wind Turbines","Test and Verify",	"Talents Training","UK OWF Dynamics","Maritime Engineering","Global OWF Dynamics I","Grid Connection",	"Scientific Researches","Underwater Technology","Global OWF Dynamics II","Energy Issues","Foundations",	"North America Market Dynamics","Vessels	Environmental Survey","Metaocean and Weather Assessment",	"Asian Market Dynamics","Wind Turbines","Business Management Issues I","Business Management Issues II",	"OWF Tenders")
+doc_topic = doc_topic_distr %>% as.data.frame
+colnames(doc_topic) = topic_names
+doc_topic_OSW = doc_topic[which(X$source == 'OSW'),]
+X_OSW = X[which(X$source == 'OSW'),]
+Docu_OSW = XX$Docu[which(X$source == 'OSW'),]
+TP = cbind(year = X_OSW$year,doc_topic_OSW)
+
+
+
+```
+
+Column {data-width=25%}
+-------------------------------------
+### 
+```{r}
+chooseSliderSkin("Modern")
+h6("觀察各國家、公司、機構在分類新聞之中的主題聲量(或聲量比重)如何隨時間變化")
+prettyRadioButtons(
+  "Class", "關鍵字類別", choices = unique(E$class),
+  selected = "COUNTRY", inline=T, icon=icon("check"), 
+  status="success", animation="jelly")
+sliderInput("Rank", "類別聲量排名",  1, 40,  c(5,14), 1)
+sliderInput("Year","統計年分",2011,2019,c(2014,2018),1)
+prettyRadioButtons(
+  "Measure", "聲量計算方式", 
+  choices = list("主題總和"=0, "主題比重(%)"=1),
+  selected = 1, inline=F, status="success")
+
+```
+
+Column {data-width=75%}
+-------------------------------------
+### 
+```{r}
+# create a ui interaction:
+uiOutput("dynamic")
+# render the ui:
+output$dynamic <- renderUI({ 
+   htmlOutput("myTable")
+})
+
+# server activity:
+output$myTable <- renderGvis({
+  n = sum(E$class == input$Class)
+  eid = which(E$class==input$Class)[min(n,input$Rank[1]):min(n,input$Rank[2])]
+  df = do.call(rbind, lapply(eid, function(i) {
+  TP[Docu_OSW[,i],] %>%
+    melt(id.vars = 'year',variable.name = 'topic',value.name = 'pro') %>% 
+    xtabs(pro~year+topic,.) %>% 
+    as.data.frame.matrix %>% 
+    {cbind(name=E$name[i], year=rownames(.), .)}
+    })) %>%
+    mutate(year = as.integer(as.character(year))) %>% 
+    filter(year >= input$Year[1] & year <= input$Year[2])
+  df$Total = rowSums(df[,3:20])
+
+  if(input$Measure == 1) {
+    df = df %>% group_by(year) %>% 
+      mutate_each(list( ~(./sum(.)) ), -name) %>% 
+      ungroup
+    df[is.na(df)] = 0
+  }
+
+  # df$subject = df$name
+  gvisMotionChart(
+    df,"name","year",
+    options=list(width=750, height=580))       
+  })
+
+
+```
+
+

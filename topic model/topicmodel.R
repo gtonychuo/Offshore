@@ -3,9 +3,14 @@ options(digits = 10)
 pacman::p_load(dplyr,readr,udpipe,text2vec,ggplot2,stringr,tm)
 
 # 匯入資料集
-offshore = read_csv("./topic model/offshore_wind_pos0723.csv")
-entity = read_csv("./topic model/E4.csv")
+# 最新版本
+offshore = read_csv("./topic model/offshore_wind_pos_0807.csv")
+# offshore = read_csv("./topic model/offshore_wind_pos0723.csv")
+entity = read_csv("./topic model/E5.csv")
 
+offshore %>% filter(subject == "Grid Connection") %>% group_by(title) %>%  summarise(n =n(),date= date[1],tx = sentences[1]) -> y
+table(y$date)
+z = X %>% filter(subject == "Grid Connection")
 # 篩選只有名詞的字彙
 clean_offshore  = offshore %>%
   filter(!(text %in% stopwords()) & is_stop == F & pos_ %in% c("PROPN","NOUN"))
@@ -56,6 +61,13 @@ doc_topic_distr =
   lda_model$fit_transform(x = dtm_clean, n_iter = 1000, 
                           convergence_tol = 0.001, n_check_convergence = 25, 
                           progressbar = FALSE)
+
+
+# 主題與字的分佈
+topic_word_distr = lda_model$topic_word_distribution
+
+save(doc_topic_distr,topic_word_distr, file = "nn_24.rdata")
+
 # 取得個主題前20重要的字
 c = lda_model$get_top_words(n = 20, lambda = 0.5)
 
