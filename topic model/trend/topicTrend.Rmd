@@ -1,5 +1,5 @@
 ---
-title: "主題模型聲量分析"
+title: "主題模型交叉趨勢分析"
 output: 
   flexdashboard::flex_dashboard:
     theme: default
@@ -13,20 +13,20 @@ runtime: shiny
 
 ```{r}
 pacman::p_load(shinyWidgets,shinythemes,dplyr,googleVis,reshape2)
-load("./C6.rdata")
+load("./C10.rdata")
 X$year = format(X$date,"%Y") %>% factor
-load("./0807_nn_24.rdata")
+load("./09_12_nn_24.rdata")
 
-topic_names = c("Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M","Wind Turbines","Test and Verify",	"Talents Training","UK OWF Dynamics","Maritime Engineering","Global OWF Dynamics I","Grid Connection",	"Scientific Researches","Underwater Technology","Global OWF Dynamics II","Energy Issues","Foundations",	"North America Market Dynamics","Vessels	Environmental Survey","Metaocean and Weather Assessment",	"Asian Market Dynamics","Wind Turbines","Business Management Issues I","Business Management Issues II",	"OWF Tenders")
+topic_names = c("Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M","Wind Turbines Test and Verify","Talents Training","UK OWF Dynamics","Maritime Engineering","Global OWF Dynamics I","Grid Connection",	"Scientific Researches","Underwater Technology","Global OWF Dynamics II","Energy Issues","Foundations",	"North America Market Dynamics","Vessels",	"Environmental Survey","Metaocean and Weather Assessment",	"Asian Market Dynamics","Wind Turbines","Business Management Issues I","Business Management Issues II",	"OWF Tenders")
 doc_topic = doc_topic_distr %>% as.data.frame
 colnames(doc_topic) = topic_names
-doc_topic_OSW = doc_topic[which(X$source == 'OSW'),]
-X_OSW = X[which(X$source == 'OSW'),]
-Docu_OSW = XX$Docu[which(X$source == 'OSW'),]
+# doc_topic_OSW = doc_topic[which(X$source == 'OSW'),]
+doc_topic_OSW = doc_topic
+# X_OSW = X[which(X$source == 'OSW'),]
+X_OSW = X
+# Docu_OSW = XX$Docu[which(X$source == 'OSW'),]
+Docu_OSW = XX$Docu
 TP = cbind(year = X_OSW$year,doc_topic_OSW)
-
-
-
 ```
 
 Column {data-width=25%}
@@ -38,6 +38,10 @@ h6("觀察各國家、公司、機構在分類新聞之中的主題聲量(或聲
 prettyRadioButtons(
   "Class", "關鍵字類別", choices = unique(E$class),
   selected = "COUNTRY", inline=T, icon=icon("check"), 
+  status="success", animation="jelly")
+prettyRadioButtons(
+  "Sub_Class", "ORG子類別", choices = unique(E$sub_class),
+  selected = NA, inline=T, icon=icon("check"), 
   status="success", animation="jelly")
 sliderInput("Rank", "類別聲量排名",  1, 40,  c(5,14), 1)
 sliderInput("Year","統計年分",2011,2019,c(2014,2018),1)
@@ -61,8 +65,14 @@ output$dynamic <- renderUI({
 
 # server activity:
 output$myTable <- renderGvis({
-  n = sum(E$class == input$Class)
-  eid = which(E$class==input$Class)[min(n,input$Rank[1]):min(n,input$Rank[2])]
+  if (input$Class == 'ORG'){
+    filterd = E$class == input$Class & E$sub_class == input$Sub_Class
+  }
+  else{
+    filterd = E$class == input$Class
+  }
+  n = sum(filterd)
+  eid = which(filterd)[min(n,input$Rank[1]):min(n,input$Rank[2])]
   df = do.call(rbind, lapply(eid, function(i) {
   TP[Docu_OSW[,i],] %>%
     melt(id.vars = 'year',variable.name = 'topic',value.name = 'pro') %>% 

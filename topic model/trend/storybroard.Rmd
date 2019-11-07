@@ -1,0 +1,135 @@
+---
+title: "故事牆"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: default
+    css: JH.css
+    social: menu
+    source_code: embed 
+    logo: nsysu48.png
+    favicon: nsysu48.png
+runtime: shiny
+---
+
+```{r results='hide', message=FALSE, warning=FALSE}
+pacman::p_load(shinyWidgets,shinythemes)
+pacman::p_load(dplyr, stringr, reshape2, highcharter, RColorBrewer,d3heatmap)
+load("C6.rdata")
+load("09_12_nn_24.rdata")
+
+country = E %>% filter(class == "COUNTRY") %>% .$name %>% sub(pattern = " ", replacement = ".", .)
+country_doc = XX$Docu[,country]
+
+pSpectral = brewer.pal(11,"Spectral")
+TP = data.frame(doc_topic_distr) %>% setNames(c(
+  "Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M",
+  "Wind Turbines Test and Verify",	"Talents Training","UK OWF Dynamics",
+  "Maritime Engineering","Global OWF Dynamics I","Grid Connection",	
+  "Scientific Researches","Underwater Technology","Global OWF Dynamics II",
+  "Energy Issues","Foundations",	"North America Market Dynamics","Vessels",
+  "Environmental Survey","Metaocean and Weather Assessment",	
+  "Asian Market Dynamics","Wind Turbines","Business Management Issues I",
+  "Business Management Issues II",	"OWF Tenders"
+  ))
+```
+
+### 整體趨勢
+```{r}
+# averaged topic weight per year
+split(TP, format(X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+```
+
+
+
+### 台灣的主題分佈
+```{r}
+
+# 篩選特定國家
+filter_X = X[country_doc[,"Taiwan"],]
+# averaged topic weight per year
+# split(TP, format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+#   d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+split(TP[,-8], format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+```
+
+***
+2012年政府公布「風力發電離岸系統示範獎勵辦法，啟動離岸風電開發</br>
+所以在離岸風場招標議題聲量偏高，相關廠商都想進來台灣市場分一杯羹</br>
+台灣市場剛起步，水下技術都不太成熟，在台灣都幾乎沒有相關議題
+
+
+### 中國的主題分佈
+
+```{r}
+
+# 篩選特定國家
+filter_X = X[country_doc[,"China"],]
+# averaged topic weight per year
+split(TP[,-8], format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+# split(TP, format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+#   d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+```
+
+***
+可以看出中國在2010年到2019年對於海事工程都佔有相當比例</br>
+當掌握相關核心技術時，可以返回歐洲市場，以成本優勢來佔有市場
+
+### 日本的主題分佈
+
+```{r}
+
+# 篩選特定國家
+filter_X = X[country_doc[,"Japan"],]
+# averaged topic weight per year
+split(TP, format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+split(TP[,-8], format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+```
+
+***
+2009年日本設置海上測風塔進行風況、海像資料實測，並於2010年完成著床式示範風場安裝</br>
+所以在2010年有明顯的離岸風場的招標議題
+
+### 英國
+```{r}
+# 篩選特定國家
+filter_X = X[country_doc[,"UK"],]
+# averaged topic weight per year
+# split(TP, format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+#   d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+split(TP[,-8], format(filter_X$date,'%Y')) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),yaxis_font_size='10px',scale = "column")
+
+country_doc
+```
+
+***
+12313123213
+32132131
+
+### 1213
+
+```{r}
+split(TP, X$subject) %>% sapply(colMeans) %>% 
+  d3heatmap(T, F, col=rev(pSpectral),scale = "column")
+table(X$subject)
+```
+
+
+```{r}
+filter_X =  X %>% subset(subject == "offshore")
+table(X$subject)
+```
+
