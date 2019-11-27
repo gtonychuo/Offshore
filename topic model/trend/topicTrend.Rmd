@@ -13,20 +13,31 @@ runtime: shiny
 
 ```{r}
 pacman::p_load(shinyWidgets,shinythemes,dplyr,googleVis,reshape2)
-load("./C10.rdata")
+load("./C10a.rdata")
+load("./nn40.rdata")
+# 取出年份
 X$year = format(X$date,"%Y") %>% factor
-load("./09_12_nn_24.rdata")
 
-topic_names = c("Subsea Investigation","Subsea Cables","Ocean Energy","OWF O&M","Wind Turbines Test and Verify","Talents Training","UK OWF Dynamics","Maritime Engineering","Global OWF Dynamics I","Grid Connection",	"Scientific Researches","Underwater Technology","Global OWF Dynamics II","Energy Issues","Foundations",	"North America Market Dynamics","Vessels",	"Environmental Survey","Metaocean and Weather Assessment",	"Asian Market Dynamics","Wind Turbines","Business Management Issues I","Business Management Issues II",	"OWF Tenders")
+# 設定topic名稱
+topic_names = c("foundations I","none","cable laying","none","wind turbines","none","O&M","inspection & repair","financing","none","Thirdnoneparty certification","energy issues","ocean data measurements","none","grid","Asia","tender","none","scientific researches","environmental survey","ports","cables","North Americas","Europe","operation safety","integration systems ","none","vessels I","industry","vessels II","Taiwan ","trainings","none","foudation installation","foundations II","Scotland","Ocean Energy","none","USA","none")
+
+# 設定成dataframe後改變col名稱
 doc_topic = doc_topic_distr %>% as.data.frame
 colnames(doc_topic) = topic_names
+# 取除產業分析師沒有命名的部分
+dupl_id = c(-which(duplicated(colnames(doc_topic))),-2)
+doc_topic_clean = doc_topic[,dupl_id]
+
 # doc_topic_OSW = doc_topic[which(X$source == 'OSW'),]
-doc_topic_OSW = doc_topic
+# doc_topic_OSW = doc_topic
 # X_OSW = X[which(X$source == 'OSW'),]
-X_OSW = X
 # Docu_OSW = XX$Docu[which(X$source == 'OSW'),]
-Docu_OSW = XX$Docu
-TP = cbind(year = X_OSW$year,doc_topic_OSW)
+
+Docu = XX$Docu
+# 將源文件到合併主題與文章分佈
+TP_ = merge(X,doc_topic_clean,by='row.names',all.y=TRUE)
+# 只挑選重要的欄位（year與主題名稱）
+TP = TP_ %>% select(7:37)
 ```
 
 Column {data-width=25%}
@@ -43,8 +54,8 @@ prettyRadioButtons(
   "Sub_Class", "ORG子類別", choices = unique(E$sub_class),
   selected = NA, inline=T, icon=icon("check"), 
   status="success", animation="jelly")
-sliderInput("Rank", "類別聲量排名",  1, 40,  c(5,14), 1)
-sliderInput("Year","統計年分",2011,2019,c(2014,2018),1)
+sliderInput("Rank", "類別聲量排名",  1, 40,  c(1,14), 1)
+sliderInput("Year","統計年分",2011,2019,c(2014,2019),1)
 prettyRadioButtons(
   "Measure", "聲量計算方式", 
   choices = list("主題總和"=0, "主題比重(%)"=1),
@@ -74,7 +85,7 @@ output$myTable <- renderGvis({
   n = sum(filterd)
   eid = which(filterd)[min(n,input$Rank[1]):min(n,input$Rank[2])]
   df = do.call(rbind, lapply(eid, function(i) {
-  TP[Docu_OSW[,i],] %>%
+  TP[Docu[,i],] %>%
     melt(id.vars = 'year',variable.name = 'topic',value.name = 'pro') %>% 
     xtabs(pro~year+topic,.) %>% 
     as.data.frame.matrix %>% 
@@ -91,9 +102,9 @@ output$myTable <- renderGvis({
     df[is.na(df)] = 0
   }
 
-  # df$subject = df$name
+  df$subject = df$name
   gvisMotionChart(
-    df,"name","year",
+    df,idvar = "name",timevar = "year",
     options=list(width=750, height=580))       
   })
 

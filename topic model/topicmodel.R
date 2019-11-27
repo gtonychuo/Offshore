@@ -7,7 +7,14 @@ pacman::p_load(dplyr,readr,udpipe,text2vec,ggplot2,stringr,tm)
 # library(tm)
 # library(text2vec)
 load("C10a.rdata")
-把name改成`_`相連
+E6 = read_csv("topic model/E6.csv")
+E10 = read_csv("topic model/E10a.csv")
+E10 %in% E6
+E6$name
+E10$name
+
+E10$name[!unique(E10$name) %in% unique(E6$name)]
+# 把name改成`_`相連
 E$name = gsub(" ","_",E$name)
 tx = X$tx
 for(i in 1:nrow(E)) {
@@ -37,6 +44,8 @@ clean_offshore  = offshore2 %>%
 # 轉換文件字頻表成dtm
 x <- document_term_frequencies(clean_offshore,document = "doc_id", term = "token")
 dtm = document_term_matrix(x)
+all = 1:13601
+all[!(1:13601 %in% as.integer(unique(x$doc_id)))]
 dim(dtm)
 
 # 基本資料篩除
